@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batangas State University | College Admission</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="personal.css">
+  <link rel="stylesheet" href="readfirst.css">
+
+  <link rel="stylesheet" href="aap.css">
+  <link rel="stylesheet" href="confirmation.css">
+
+  <script defer src="script.js"></script>
+  <script defer src="personal.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- PERSONAL SECTION -->
+  <section id="personal-section" class="personal-section">
+    <div class="personal-box">
+
+      <!-- Header -->
+      <div class="personal-header">
+        <p class="personal-title">Personal</p>
+      </div>
+
+      <p class="note-text">Note:(*) - Required</p>
+
+      <!-- Photo Upload Box -->
+      <div class="photo-box">
+        <div class="photo-header">
+          <p class="photo-title">Photo</p>
+        </div>
+
+        <div class="photo-area">
+          <div class="photo-preview" id="photoPreview"></div>
+          <div class="photo-controls">
+            <button class="choose-file-btn" onclick="document.getElementById('photoInput').click()">
+              Choose File
+            </button>
+
+            <span class="file-name" id="photoStatus">No file chosen</span>
+          <input type="file" id="photoInput" class="file-input" accept="image/*" onchange="handlePhotoUpload()" style="display: none;">
+          </div>
+
+          <p class="photo-error">
+            <img src="assets/invalidinfo.png" alt="error icon" class="photo-invalid-icon">
+            Invalid image type or no image selected</p>
+        </div>
+
+        <!-- Photo Requirements -->
+        <div class="photo-req-section">
+            <div class="photo-req-header">
+                <span class="photo-req-title">
+                    <img src="assets/reqinfo.png" alt="icon" class="photo-req-icon">
+                    Photo Requirements
+                </span>
+            </div>
+
+
+            <div class="photo-req-box">
+                <ul class="photo-req-list">
+                    <li><b>Recent Passport size photo (4.5 cm x 3.5 cm or 1.8 inches x 1.4 inches)</b></li>
+                    <li>Plain white background</li>
+                    <li>Without any worn electronic devices</li>
+                </ul>
+                <img src="assets/sample_photo.jpg" alt="Sample Photo" class="photo-sample">
+            </div>
+        </div>
+      </div>
+
+      <!-- Personal Info Fields -->
+      <div class="personal-fields">
+        <div class="form-group">
+          <label><u>*Last Name</u></label>
+          <input type="text" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label><u>*First Name</u></label>
+          <input type="text" placeholder="">
+        </div>
+
+        <div class="form-group">
+          <label><u>Middle Name</u> (optional)</label>
+          <input type="text" placeholder="">
+        </div>
+
+        <div class="reminder-section">
+            <div class="reminder-header">
+                <span class="reminder-title">
+                    Reminder
+                </span>
+            </div>
+
+            <div class="reminder-box">
+                <p>Please leave this section blank if you don’t have a middle name. If you do, make sure to fill it out in full, avoiding initials.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label><u>Name Extension</u> (optional)</label>
+          <input type="text" placeholder="">
+        </div>
+
+        <div class="form-group sex-field">
+          <label><u>*Sex</u></label>
+          <div class="radio-group">
+            <label><input type="radio" name="sex"> Male</label>
+            <label><input type="radio" name="sex"> Female</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><u>*Birthdate</u></label>
+          <input type="date" placeholder="dd/mm/yyyy">
+        </div>
+
+        <div class="form-group">
+          <label><u>*Nationality</u></label>
+          <select>
+            <option>Select Nationality</option>
+            <option>Filipino</option>
+            <option>American</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><u>*Nationality</u></label>
+          <div class="other-nationality">
+            <input type="text" placeholder="">
+            <div class="other-box">Other, Please specify</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><u>*Height (cm)</u></label>
+          <input type="text" placeholder="">
+        </div>
+
+        <!-- Address Section -->
+        <label class="sections-title"><u>*Address</u></label>
+
+        <div class="address-box">
+          <div class="address-field">
+            <label><u>Region</u></label>
+            <select id="region"><option value="">Select Region</option></select>
+          </div>
+
+          <div class="address-field">
+            <label><u>Province</u></label>
+            <select id="province"><option value="">Select Province</option></select>
+          </div>
+
+          <div class="address-field">
+            <label><u>City/Municipality</u></label>
+            <select id="city"><option value="">Select City/Municipality</option></select>
+          </div>
+
+          <div class="address-field">
+            <label><u>Barangay</u></label>
+            <select id="barangay"><option>Select Barangay</option></select>
+          </div>
+
+          <div class="address-field">
+            <label><u>House No./Bldg/Street/Vi.</u></label>
+            <input type="text" placeholder="House No./Bldg/Street/Village">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><u>*Email Address</u></label>
+          <input type="email" placeholder="Enter Email Address">
+        </div>
+
+        <div class="attention-section">
+            <div class="attention-header">
+                <span class="attention-title">
+                    <img src="assets/attention.png" alt="attention icon" class="attention-icon">
+                    Attention
+                </span>
+            </div>
+
+            <div class="attention-box">
+                <p>** <b>VALID</b> and <b>ACTIVE</b> email address is required. Make sure that you have access to this email and can receive incoming mail. Notifications for your online application will be sent to this email address. Only one (1) application per email address is allowed. **</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label><u>*Mobile No.</u></label>
+          <input type="text" placeholder="Enter Mobile Number">
+        </div>
+
+        <div class="form-group">
+          <label><u>*Telephone No.</u></label>
+          <input type="text" placeholder="Enter Telephone Number">
+        </div>
+
+        <hr class="divider">
+
+        <!-- Emergency Contact Section -->
+        <div class="emergency-section">
+          <div class="emergency-header">
+            <!--
+            <span><u>*Contact Person</u></span>
+            -->
+            <span class="sections-title"><u>*Contact Person</u></span>
+            
+            <div class="emergency-title">Contact person in case of emergency</div>
+          </div>
+
+          <div class="emergency-box">
+            <div class="form-group">
+              <label><u>Name</u></label>
+              <input type="text" placeholder="Enter Name of Contact Person">
+            </div>
+
+            <div class="form-group">
+              <label><u>Address</u></label>
+              <input type="text" placeholder="Enter Address">
+            </div>
+
+            <div class="form-group">
+              <label><u>Mobile/Telephone No.</u></label>
+              <input type="text" placeholder="Enter Mobile or Telephone No.">
+            </div>
+
+            <div class="form-group">
+              <label><u>Relationship</u></label>
+              <select>
+                <option>Select Relationship</option>
+                <option>Parent</option>
+                <option>Brother/Sister</option>
+                <option>Grandparent</option>
+                <option>Spouse</option>
+                <option>Guardian</option>
+                <option>Others</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>If others, Please specify:</label>
+              <input type="text" placeholder="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- SOCIO-ECONOMIC SECTION -->
+      <div id="socio-economic-section" class="socio-economic-section">
+        <!-- Header -->
+        <div class="socio-economic-header">
+          <p class="socio-economic-title">Socio-Economic Data</p>
+        </div>
+
+        <!-- First member in family -->
+        <div class="form-group vertical-field">
+          <label><u>* Are you the first member in the family (i.e. parents and siblings) to apply for College/ Tertiary Education?</u></label>
+          <div class="radio-group">
+            <label class="no-underline"><input type="radio" name="first_member"> Yes</label>
+            <label class="no-underline"><input type="radio" name="first_member"> No</label>
+          </div>
+        </div>
+
+        <!-- 4Ps Program -->
+        <div class="form-group vertical-field">
+          <div>
+            <label><u>* Is your family a recipient of the 4Ps Program of the government?</u></label>
+            <div class="infos-box">
+              <p><b>Pantawid Pamilyang Pilipino Program (4Ps)</b> is the national poverty reduction strategy and human capital investment program that provides conditional cash transfer to poor households to improve health, nutrition and education.</p>
+            </div>
+          </div>
+          <div class="radio-group">
+            <label class="no-underline"><input type="radio" name="4ps"> Yes</label>
+            <label class="no-underline"><input type="radio" name="4ps"> No</label>
+          </div>
+        </div>
+
+        <!-- Indigenous Group -->
+        <div class="form-group vertical-field">
+          <label><u>* Are you a member of any indigenous group?</u></label>
+          <div class="infos-box">
+            <p><b>Indigenous groups</b> are distinct social and cultural groups that share collective ancestral ties to the lands and natural resources where they live, occupy or from which they have been displaced.</p>
+          </div>
+          <div class="radio-group">
+            <label class="no-underline"><input type="radio" name="indigenous"> Yes</label>
+            <label class="no-underline"><input type="radio" name="indigenous"> No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><u>* If yes, please identify.</u></label>
+          <select>
+            <option>N/A</option>
+            <option>Others</option>
+            <option>Abelling</option>
+            <option>Abiyan (Aeta)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><u>* If others, please identify.</u></label>
+          <input type="text" placeholder="">
+        </div>
+
+        <!-- LGBTQIA+ -->
+        <div class="form-group vertical-field">
+          <label><u>* Are you a member of LGBTQIA+?</u></label>
+          <div class="infos-box">
+            <p><b>LGBTQIA+</b> stands for lesbian, gay, bisexual, transgender, queer (or sometimes questioning), intersex, asexual, and others.</p>
+          </div>
+          <div class="radio-group">
+            <label class="no-underline"><input type="radio" name="lgbtqia"> Yes</label>
+            <label class="no-underline"><input type="radio" name="lgbtqia"> No</label>
+            <label class="no-underline"><input type="radio" name="lgbtqia"> Prefer not to say</label>
+          </div>
+        </div>
+
+        <!-- Internally Displaced Person -->
+        <div class="form-group idp-section vertical-field">
+          <div class="label-btn-wrapper">
+            <label><u>* Are you an internally displaced person?</u></label>
+            <button class="info-btn">
+              <img src="assets/definition.png" alt="info">
+            </button>
+
+            <div class="idp-popup">
+            <div class="popup-header">
+              <p><b>Definition of Terms</b></p>
+            </div>
+            <table>
+              <tr>
+                <td>Internally Displaced Persons</td>
+                <td>People or groups of people who have been forced or obliged to flee or to leave their homes due to armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border. (e.g. residence relocated due to disaster such as typhoon, earthquake or volcanic eruption).</td>
+              </tr>
+              <tr>
+                <td>Persons With Disability</td>
+                <td>Are persons who have long-term physical, mental, intellectual or sensory impairments which is an interaction with various barriers may hinder their full and effective participation in society on an equal basis with others.</td>
+              </tr>
+              <tr>
+                <td>Psychiatric Disorder</td>
+                <td>A disorder characterized by a clinically significant disturbance in an individual's cognition, emotional regulation, or behaviour (e.g. anxiety disorder, depression, bipolar disorder, schizophrenia, etc.)</td>
+              </tr>
+              <tr>
+                <td>Disability caused by chronic illness</td>
+                <td>A disability that results from complications brought about by the worsening of a chronic medical condition. (e.g. diabetes, cancer, kidney-failure, etc.)</td>
+              </tr>
+              <tr>
+                <td>Learning Disability</td>
+                <td>A disability that makes it difficult for a person to focus, comprehend, and retain information.</td>
+              </tr>
+              <tr>
+                <td>Visual Disability</td>
+                <td>Visual disability is considered a disability only when it can no longer be corrected or as deemed by the attending.</td>
+              </tr>
+              <tr>
+                <td>Orthopedic/Locomotor Disability</td>
+                <td>A disability that interferes with the ability of the joints, muscles, or limbs to function normally. (e.g. polio, cerebral palsy)</td>
+              </tr>
+              <tr>
+                <td>Communication Disability</td>
+                <td>A disability with two sub-types: hearing impairment and speech and language impairment. A person is said to be hearing impaired when he or she partially or completely lose his or her hearing ability. Meanwhile, a person with a speech and language impairment has trouble articulating words. (deaf and/or mute)</td>
+              </tr>
+              <tr>
+                <td>Congenital Disease</td>
+                <td>A structural or functional anomalies that is present at birth which may have hereditary or non-hereditary cause.</td>
+              </tr>
+            </table>
+          </div>
+
+          </div>
+          <div class="radio-group">
+            <label class="no-underline"><input type="radio" name="idp"> Yes</label>
+            <label class="no-underline"><input type="radio" name="idp"> No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>If yes, please provide some details:</label>
+          <input type="text" placeholder="">
+        </div>
+
+        <!-- Person with Disability -->
+        <div class="form-group vertical-field">
+          <label><u>* Are you a person with disability?</u></label>
+          <div class="radio-group">
+            <label class="no-underline"><input type="radio" name="pwd"> Yes</label>
+            <label class="no-underline"><input type="radio" name="pwd"> No</label>
+          </div>
+        </div>
+
+        <!-- Check all that apply box -->
+        <div class="form-group check-box-section">
+          <div class="check-box-header">
+            <div class="check-box-title">Check all that apply</div>
+          </div>
+
+          <div class="checkbox-info-wrapper">
+            <div class="check-boxes">
+              <label class="no-underline"><input type="checkbox"> Psychiatric Disorder</label>
+              <label class="no-underline"><input type="checkbox"> Learning Disability</label>
+              <label class="no-underline"><input type="checkbox"> Visual Disability (Total Blindness; Partial Blindness; Low-Vision)</label>
+              <label class="no-underline"><input type="checkbox"> Orthopedic/Locomotor Disability</label>
+              <label class="no-underline"><input type="checkbox"> Communication Disability</label>
+              <label class="no-underline"><input type="checkbox"> Congenital</label>
+              <label class="no-underline"><input type="checkbox"> Disability caused by chronic illness (Diabetes, cancer, kidney-failure)</label>
+            </div>
+            <button class="info-btn">
+              <img src="assets/definition.png" alt="info">
+            </button>
+
+            <div class="idp-popup">
+              <div class="popup-header">
+                <p><b>Definition of Terms</b></p>
+              </div>
+              <table>
+                <tr>
+                  <td>Internally Displaced Persons</td>
+                  <td>People or groups of people who have been forced or obliged to flee or to leave their homes due to armed conflict, or to avoid the effects of armed conflict, situations of generalized violence, violations of human rights, or natural or human-made disasters and who have not crossed an international border. (e.g. residence relocated due to disaster such as typhoon, earthquake or volcanic eruption).</td>
+                </tr>
+                <tr>
+                  <td>Persons With Disability</td>
+                  <td>Are persons who have long-term physical, mental, intellectual or sensory impairments which is an interaction with various barriers may hinder their full and effective participation in society on an equal basis with others.</td>
+                </tr>
+                <tr>
+                  <td>Psychiatric Disorder</td>
+                  <td>A disorder characterized by a clinically significant disturbance in an individual's cognition, emotional regulation, or behaviour (e.g. anxiety disorder, depression, bipolar disorder, schizophrenia, etc.)</td>
+                </tr>
+                <tr>
+                  <td>Disability caused by chronic illness</td>
+                  <td>A disability that results from complications brought about by the worsening of a chronic medical condition. (e.g. diabetes, cancer, kidney-failure, etc.)</td>
+                </tr>
+                <tr>
+                  <td>Learning Disability</td>
+                  <td>A disability that makes it difficult for a person to focus, comprehend, and retain information.</td>
+                </tr>
+                <tr>
+                  <td>Visual Disability</td>
+                  <td>Visual disability is considered a disability only when it can no longer be corrected or as deemed by the attending.</td>
+                </tr>
+                <tr>
+                  <td>Orthopedic/Locomotor Disability</td>
+                  <td>A disability that interferes with the ability of the joints, muscles, or limbs to function normally. (e.g. polio, cerebral palsy)</td>
+                </tr>
+                <tr>
+                  <td>Communication Disability</td>
+                  <td>A disability with two sub-types: hearing impairment and speech and language impairment. A person is said to be hearing impaired when he or she partially or completely lose his or her hearing ability. Meanwhile, a person with a speech and language impairment has trouble articulating words. (deaf and/or mute)</td>
+                </tr>
+                <tr>
+                  <td>Congenital Disease</td>
+                  <td>A structural or functional anomalies that is present at birth which may have hereditary or non-hereditary cause.</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        
+        <!-- Solo parent -->
+        <div class="form-group vertical-field">
+          <label><u>* Are you a child of a solo parent?</u></label>
+          <div class="infos-box">
+            <p><b>Solo parent</b> refers to a parent who is left alone with the responsibility of parenthood due to death, detention, mental incapacity or legal separation with spouse.</p>
+          </div>
+          <div class="radio-group">
+            <label class="no-underline"><input type="radio" name="solo_parent"> Yes</label>
+            <label class="no-underline"><input type="radio" name="solo_parent"> No</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- PARENT'S INFORMATION SECTION -->
+      <div class="parents-section">
+        <div class="parents-header">
+          <p class="parents-title">Parent's Information</p>
+        </div>
+
+        <div class="parents-box-header">
+          <div class="parents-box-title">Parent's Information</div>
+        </div>
+
+        <div class="parents-box">
+          <table class="parents-table">
+            <tr>
+              <th rowspan="2">Relationship</th>
+              <th colspan="3">Name</th>
+              <th rowspan="2">Age</th>
+              <th rowspan="2">Occupation</th>
+              <th rowspan="2">Contact No.</th>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <th>First Name</th>
+              <th>Middle Name</th>
+            </tr>
+            <tr>
+              <td><u>Father</u></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+            </tr>
+            <tr>
+              <td rowspan="2"><u>Mother</u></td>
+              <td colspan="3" class="maiden-cell">Mother's Maiden Name</td>
+              <td colspan="3" class="maiden-cell"></td>
+            </tr>
+            <tr>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+            </tr>
+          </table>
+
+        <p class="maiden-note">**Maiden name – surname before her marriage.**</p>
+      </div>
+
+      <hr class="divider">
+
+      <div class="income-section">
+        <p class="income-label"><u>Estimated Monthly Family Income</u></p>
+
+        <div class="income-options">
+          <!-- First line -->
+          <label><input type="radio" name="income"> Less than PhP 10,957</label>
+          <label><input type="radio" name="income"> PhP 10,957 to less than PhP 21,914</label>
+          <label><input type="radio" name="income"> PhP 21,914 to less than PhP 43,828</label>
+        </div>
+
+        <div class="income-options">
+          <!-- Second line -->
+          <label><input type="radio" name="income"> PhP 43,828 to less than PhP 76,699</label>
+          <label><input type="radio" name="income"> PhP 76,699 to less than PhP 131,484</label>
+          <label><input type="radio" name="income"> PhP 131,484 to less than PhP 219,140</label>
+        </div>
+
+        <div class="income-options">
+          <!-- Third line -->
+          <label><input type="radio" name="income"> PhP 219,140 and above</label>
+        </div>
+      </div>
+
+      <!-- SIBLING/S INFORMATION SECTION -->
+      <div class="siblings-section">
+        <div class="siblings-header">
+          <p class="siblings-title">Sibling/s Information</p>
+        </div>
+
+        <p class="siblings-question"><u>Do you have any siblings (brothers or sisters)?</u></p>
+        <div class="radio-group">
+          <label><input type="radio" name="hasSiblings" id="hasSiblingsYes"> Yes</label>
+          <label><input type="radio" name="hasSiblings" id="hasSiblingsNo"> No</label>
+        </div>
+
+        <div class="siblings-box-header" id="addSiblingHeader">
+          <div class="siblings-box-title">Add Sibling</div>
+        </div>
+
+        <div class="siblings-box" id="addSiblingBox">
+          <table class="siblings-table" id="siblingsTable">
+            <tr>
+              <th>Fullname</th>
+              <th>Age</th>
+              <th>Highest Educational Attainment</th>
+              <th>School</th>
+              <th>Year Graduated</th>
+              <th>Option</th>
+            </tr>
+            <tr>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true" class="dropdown-cell">
+                <select class="dropdown-field">
+                  <option value="">Select</option>
+                  <option value="Elementary">Elementary</option>
+                  <option value="High School">High School</option>
+                  <option value="College">College</option>
+                </select>
+              </td>
+              <td contenteditable="true"></td>
+              <td contenteditable="true"></td>
+              <td>
+                <button type="button" class="add-row-btn" onclick="addSiblingToSummary()">Add</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+        <!-- SIBLING/S SUMMARY TABLE -->
+        <div class="siblings-summary-box-header" id="summaryHeader">
+          <div class="siblings-summary-box-title">Siblings</div>
+        </div>
+
+        <div class="siblings-summary-box" id="summaryBox">
+          <table class="siblings-summary-table">
+            <tr>
+              <th>#</th>
+              <th>Fullname</th>
+              <th>Age</th>
+              <th>Highest Educational Attainment</th>
+              <th>School</th>
+              <th>Year Graduated</th>
+              <th>Option</th>
+            </tr>
+            <tr>
+              <td colspan="7" class="no-siblings-text">**No siblings**</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="next-btn">Next &#10140;</button>
+
+    </div>
+  </section>
+  <!--
+  <script src="personal.js"></script>
+  -->
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batangas State University | College Admission</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="aap.css">
+  <link rel="stylesheet" href="readfirst.css">
+  <link rel="stylesheet" href="confirmation.css">
+  <link rel="stylesheet" href="personal.css">
+  <script defer src="script.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- AAP SECTION -->
+  <section id="aap-section" class="aap-section">
+    <div class="aap-box">
+
+      <div class="aap-header">
+        <p class="aap-title">Affirmative Action Program (AAP)</p>
+      </div>
+
+      <p class="aap-subtitle">
+        Are you a part of the Affirmative Action Program (AAP)? Kindly choose the applicable option.
+      </p>
+
+      <div class="aap-description">
+        <p>
+          Affirmative Action refers to admission of indigents applicants, ALS graduates, students with special needs, PWD, and those belonging to the indigenous people/communities to programs in the university.
+        </p>
+      </div>
+
+      <form class="aap-form">
+        <label class="aap-option">
+          <input type="radio" name="aap" value="indigent">
+          <span>Indigent student</span>
+        </label>
+
+        <label class="aap-option">
+          <input type="radio" name="aap" value="als">
+          <span>Alternative Learning System (ALS) Graduate</span>
+        </label>
+
+        <label class="aap-option">
+          <input type="radio" name="aap" value="indigenous">
+          <span>Belong to indigenous people/indigenous cultural community</span>
+        </label>
+
+        <div class="aap-infobox">
+            <img src="assets/aapinfo.png" alt="Info Icon" class="info-icon">
+            <div class="info-text">
+                Indigenous people are communities or groups declared or recognized as such under the
+                <a href="https://www.officialgazette.gov.ph/1997/10/29/republic-act-no-8371/" target="_blank" class="aap-link">Indigenous Peoples’ Rights Act (RA 8371)</a>
+            </div>
+        </div>
+
+        <label class="aap-option">
+          <input type="radio" name="aap" value="pwd">
+          <span>Person with disability (PWD)</span>
+        </label>
+
+        <label class="aap-option">
+          <input type="radio" name="aap" value="iskolar">
+          <span>Iskolar ng Bayan</span>
+        </label>
+
+        <div class="aap-infobox">
+            <img src="assets/aapinfo.png" alt="Info Icon" class="info-icon">
+            <div class="info-text">
+                <a href="https://www.officialgazette.gov.ph/2014/11/27/republic-act-no-10648/" target="_blank" class="aap-link">Iskolar ng Bayan Act of 2014 (RA 10648)</a>
+            </div>
+        </div>
+
+        <label class="aap-option">
+          <input type="radio" name="aap" value="solo-parent">
+          <span>Children of Solo Parent</span>
+        </label>
+
+        <div class="aap-infobox">
+            <img src="assets/aapinfo.png" alt="Info Icon" class="info-icon">
+            <div class="info-text">
+                Children of Solo Parents refers to the children whose parents are raising a child or children on their own without the support of a partner or spouse; or any individual who falls under any of the categories mentioned under
+                <b>RA 8972</b>.
+            </div>
+        </div>
+
+        <label class="aap-option">
+          <input type="radio" name="aap" value="lab-school">
+          <span>BatStateU Laboratory / Integrated School</span>
+        </label>
+
+        <label class="aap-option">
+          <input type="radio" name="aap" value="none">
+          <span>None</span>
+        </label>
+
+        <button type="button" class="next-btn">Next &#10140;</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

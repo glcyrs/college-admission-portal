@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batangas State University | College Admission</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="confirmation.css">
+  <link rel="stylesheet" href="readfirst.css">
+  <link rel="stylesheet" href="aap.css">
+  <!--
+  <script defer src="script.js"></script>
+  -->
+  <script defer src="confirmation.js"></script>
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- CONFIRMATION SECTION -->
+    <section id="confirmation-section" class="confirmation-section">
+        <div class="confirmation-box">
+            <p class="note"><strong>Note: (*) - Required</strong></p>
+            <p class="instruction">Kindly provide the necessary information.</p>
+
+            <ol class="confirmation-list">
+                <li>
+                    <span class="question">Academic Status*</span><br>
+                    <label class="option"><input type="radio" name="seniorhigh" value="Graduating Senior High School student of AY 2025-2026" class="required-field"> Graduating Senior High School student of AY 2025-2026</label>
+                    <label class="option"><input type="radio" name="seniorhigh" value="Graduated Senior High School Student" class="required-field"> Graduated Senior High School Student</label>
+                </li>
+
+                <li>
+                    <span class="question">Is the applicant already enrolled (or was enrolled) in a college program in BatStateU or in other schools?*</span><br>
+                    <label class="option"><input type="radio" name="enrolled" value="yes" class="required-field"> Yes</label>
+                    <label class="option"><input type="radio" name="enrolled" value="no" class="required-field"> No</label>
+                </li>
+
+                <li>
+                    <span class="question">Is this the applicant’s first time to apply for BatStateU College Admission?*</span><br>
+                    <label class="option"><input type="radio" name="firsttime" value="yes" class="required-field"> Yes</label>
+                    <label class="option"><input type="radio" name="firsttime" value="no" class="required-field"> No</label>
+                </li>
+
+                <li>
+                    <span class="question">Have you ever transferred during your Senior High School?*</span><br>
+                    <label class="option"><input type="radio" name="transfer" value="yes"> Yes, previously from:</label><br>
+                    <input type="text" class="text-field" placeholder="Enter previous school"><br>
+                    <label class="option">In what year?</label><br>
+                    <input type="text" class="text-field" placeholder="Enter year"><br>
+                    <label class="option"><input type="radio" name="transfer" value="no"> No</label>
+                </li>
+
+                <li>
+                    <span class="question">Are you a graduate of Batangas State University Laboratory/Integrated School?*</span><br>
+                    <label class="option"><input type="radio" name="graduate" value="yes"> Yes, from:</label><br>
+                    <select class="dropdown">
+                        <option value="N/A">N/A</option>
+                        <option value="Integrated School">Batangas State University Integrated School</option>
+                        <option value="Laboratory School">Batangas State University Laboratory School</option>
+                    </select><br>
+                    <label class="option"><input type="radio" name="graduate" value="no"> No</label>
+                </li>
+            </ol>
+
+            <button class="next-btn">Next &#10140;</button>
+        </div>
+    </section>
+
+    <div id="notification" class="notification">
+        <span id="notification-text"></span>
+        <span class="close-btn" onclick="hideNotification()">×</span>
+    </div>
+
+</body>
+</html>

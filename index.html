@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Batangas State University | College Admission</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="readfirst.css">
+  <link rel="stylesheet" href="confirmation.css">
+  <link rel="stylesheet" href="aap.css">
+  <link rel="stylesheet" href="personal.css">
   <script defer src="script.js"></script>
+  <script defer src="personal.js"></script>
+  <!--
+  <script defer src="confirmation.js"></script>
+  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -14,19 +22,6 @@
   </header>
 
   <!-- INFORMATION BOX -->
-  <!--
-  <section class="info-box">
-    <p>
-      <img src="assets/info.png" alt="Info Icon" class= "info-icon">
-      To stay updated on the progress of your application, track important updates, 
-      and view any additional information related to your application, we encourage 
-      you to visit our <a href="#">Applicant’s Portal</a>. The portal is a convenient 
-      platform designed to help you manage your application journey with us. 
-      To verify your application or forgot your Application Number / PIN, please click 
-      <a href="#">here</a>.
-    </p>
-  </section>
-  -->
 
   <div class="info-box">
     <div class="info-content">
@@ -84,20 +79,26 @@
       <div class="step"><span>?</span><p>AAP</p></div>
       <div class="step"><span>1</span><p>Personal</p></div>
       <div class="step"><span>2</span><p>Education and Attachments</p></div>
-      <!--
-      <div class="step"><span>3</span><p>Attachments</p></div>
-      -->
       <div class="step"><span>3</span><p>Programs</p></div>
       <div class="step"><span>4</span><p>Form Review</p></div>
       <div class="step"><span>5</span><p>Submit</p></div>
     </div>
   </section>
 
+  <!-- WELCOME SECTION -->
   <section class="welcome-section">
     <div class="welcome-box">
       <div class="welcome-content">
         <div class="welcome-images">
           <img src="assets/welcome1.jpg" alt="Welcome Image 1">
+
+          <div class="program-info-box">
+            The university’s program offerings are recognized by the country’s Commission on Higher Education. 
+            These are designed to provide opportunities for students to discover their potentials and enhance 
+            their technical and creative skills in a vibrant academic environment. 
+            <a href="https://batstateu.edu.ph/programs/" target="_blank" class="program-link">Click here to learn more.</a>
+          </div>
+
           <img src="assets/welcome2.jpg" alt="Welcome Image 2">
         </div>
         <div class="welcome-text">
@@ -112,13 +113,7 @@
       </div>
     </div>
   </section>
-  
-  <section id="read-first-section" class="read-first-section" style="display: none;">
-    <div class="read-first-box">
-      <h2>REVISED COLLEGE ADMISSION POLICY</h2>
-      <p>This section will contain your instructions or guidelines before filling out the form.</p>
-    </div>
-  </section>
-
+  <!-- Placeholder for Read First content -->
+  <div id="readfirst-container" style="display: none;"></div>
 </body>
 </html>

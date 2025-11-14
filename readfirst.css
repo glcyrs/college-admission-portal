@@ -1,0 +1,154 @@
+.read-first-section {
+  display: flex;
+  justify-content: center;
+  margin: 60px auto;
+  font-family: 'Roboto', sans-serif;
+  color: #282828;
+}
+
+.read-first-box {
+  background-color: #fff;
+  border: 4px solid #EEEEEE;
+  border-radius: 10px;
+  padding: 40px 60px;
+  width: 92%;
+  box-sizing: border-box;
+  line-height: 1.6;
+  text-align: justify;
+  flex-wrap: wrap;
+}
+
+/* When the screen gets small enough for overlap risk */
+@media (max-width: 900px) {
+  .read-first-box {
+    margin-top: 200px; /* add extra space only when needed */
+  }
+}
+
+.main-title {
+  text-align: center;
+  color: #D84046;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  color: #D84046;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.definitions {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.definitions li {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.section-title-green {
+  color: #3C763D;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 35px;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.requirements-list, .program-list ol, .procedure-list ol {
+  margin-left: 25px;
+  padding-left: 10px;
+  text-align: justify;
+  font-family: 'Roboto', sans-serif;
+}
+
+.requirements-list ul, .procedure-list ul, .procedure-list ul {
+  list-style-type: disc;
+  margin-left: 25px;
+}
+
+.program-list p {
+  color: #282828;
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.program-list ol li {
+  margin-bottom: 8px;
+  text-align: justify;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Two-column layout */
+.strand-requirements {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #282828;
+}
+
+.strand-requirements .column {
+  flex: 1;
+}
+
+.strand-title {
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  color: #282828;
+  margin-bottom: 10px;
+}
+
+.sub-title {
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  color: #282828;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.strand-requirements p {
+  padding: 0 80px;
+  margin: 2px 0;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  color: #282828;
+}
+
+.continue-btn {
+  margin-top: 30px;
+  background-color: #D84046;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.read-first-box a {
+  color: #0086C9;
+}
+
+.next-btn {
+  background-color: #5CB85C;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 30px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  float: right;
+}
+
+.next-btn:hover {
+  background-color: #4cae4c;
+}
