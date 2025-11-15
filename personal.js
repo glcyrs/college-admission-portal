@@ -242,3 +242,32 @@ document.getElementById("hasSiblingsNo").addEventListener("change", function () 
   }
 
 })();
+
+
+//nationality
+// === Load Nationality Dropdown ===
+fetch("nationalities.json")
+  .then(response => response.json())
+  .then(list => {
+    const nationalitySelect = document.getElementById("nationality");
+
+    if (!nationalitySelect) {
+      console.error("Nationality select not found!");
+      return;
+    }
+
+    // Add all nationalities from JSON
+    list.forEach(nationality => {
+      const option = document.createElement("option");
+      option.value = nationality;
+      option.textContent = nationality;
+      nationalitySelect.appendChild(option);
+    });
+
+    // Add "Other" option at the end
+    const otherOption = document.createElement("option");
+    otherOption.value = "Other";
+    otherOption.textContent = "Other";
+    nationalitySelect.appendChild(otherOption);
+  })
+  .catch(err => console.error("Failed to load nationality list:", err));
