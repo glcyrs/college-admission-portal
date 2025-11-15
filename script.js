@@ -1,8 +1,25 @@
+/*
 document.querySelectorAll('.grade-card').forEach(card => {
   card.addEventListener('click', () => {
     alert('Downloading form...');
   });
 });
+*/
+
+const downloads = [
+  'assets/grades_form_1.pdf', // for the first card
+  'assets/grades_form_2.pdf'  // for the second card
+];
+
+document.querySelectorAll('.grade-card').forEach((card, index) => {
+  card.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = downloads[index];
+    link.download = downloads[index].split('/').pop(); // set filename
+    link.click();
+  });
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const steps = document.querySelectorAll(".step");
