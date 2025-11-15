@@ -46,7 +46,7 @@
           <input type="file" id="photoInput" class="file-input" accept="image/*" onchange="handlePhotoUpload()" style="display: none;">
           </div>
 
-          <p class="photo-error">
+          <p class="photo-error" id="photoError" style="display:none;">
             <img src="assets/invalidinfo.png" alt="error icon" class="photo-invalid-icon">
             Invalid image type or no image selected</p>
         </div>
@@ -76,17 +76,17 @@
       <div class="personal-fields">
         <div class="form-group">
           <label><u>*Last Name</u></label>
-          <input type="text" placeholder="">
+          <input type="text" id="lastName" placeholder="">
         </div>
 
         <div class="form-group">
           <label><u>*First Name</u></label>
-          <input type="text" placeholder="">
+          <input type="text" id="firstName" placeholder="">
         </div>
 
         <div class="form-group">
           <label><u>Middle Name</u> (optional)</label>
-          <input type="text" placeholder="">
+          <input type="text" id="middleName" placeholder="">
         </div>
 
         <div class="reminder-section">
@@ -109,14 +109,14 @@
         <div class="form-group sex-field">
           <label><u>*Sex</u></label>
           <div class="radio-group">
-            <label><input type="radio" name="sex"> Male</label>
-            <label><input type="radio" name="sex"> Female</label>
+            <label><input type="radio" name="sex" value="Male"> Male</label>
+            <label><input type="radio" name="sex" value="Female"> Female</label>
           </div>
         </div>
 
         <div class="form-group">
           <label><u>*Birthdate</u></label>
-          <input type="date" placeholder="dd/mm/yyyy">
+          <input type="date" id="birthdate" placeholder="dd/mm/yyyy">
         </div>
 
         <div class="form-group">
@@ -136,7 +136,7 @@
 
         <div class="form-group">
           <label><u>*Height (cm)</u></label>
-          <input type="text" placeholder="">
+          <input type="text" id="height" placeholder="">
         </div>
 
         <!-- Address Section -->
@@ -165,13 +165,13 @@
 
           <div class="address-field">
             <label><u>House No./Bldg/Street/Vi.</u></label>
-            <input type="text" placeholder="House No./Bldg/Street/Village">
+            <input type="text" id="houseNo" placeholder="House No./Bldg/Street/Village">
           </div>
         </div>
 
         <div class="form-group">
           <label><u>*Email Address</u></label>
-          <input type="email" placeholder="Enter Email Address">
+          <input type="email" id="email" placeholder="Enter Email Address">
         </div>
 
         <div class="attention-section">
@@ -189,12 +189,12 @@
 
         <div class="form-group">
           <label><u>*Mobile No.</u></label>
-          <input type="text" placeholder="Enter Mobile Number">
+          <input type="text" id="mobile" placeholder="Enter Mobile Number">
         </div>
 
         <div class="form-group">
           <label><u>*Telephone No.</u></label>
-          <input type="text" placeholder="Enter Telephone Number">
+          <input type="text" id="telephone" placeholder="Enter Telephone Number">
         </div>
 
         <hr class="divider">
@@ -213,22 +213,22 @@
           <div class="emergency-box">
             <div class="form-group">
               <label><u>Name</u></label>
-              <input type="text" placeholder="Enter Name of Contact Person">
+              <input type="text" id="contactName" placeholder="Enter Name of Contact Person">
             </div>
 
             <div class="form-group">
               <label><u>Address</u></label>
-              <input type="text" placeholder="Enter Address">
+              <input type="text" id="contactAddress" placeholder="Enter Address">
             </div>
 
             <div class="form-group">
               <label><u>Mobile/Telephone No.</u></label>
-              <input type="text" placeholder="Enter Mobile or Telephone No.">
+              <input type="text" id="contactMobile" placeholder="Enter Mobile or Telephone No.">
             </div>
 
             <div class="form-group">
               <label><u>Relationship</u></label>
-              <select>
+              <select id="contactRelationship">
                 <option>Select Relationship</option>
                 <option>Parent</option>
                 <option>Brother/Sister</option>
@@ -292,7 +292,7 @@
 
         <div class="form-group">
           <label><u>* If yes, please identify.</u></label>
-          <select>
+          <select id="indigenousSelect">
             <option>N/A</option>
             <option>Others</option>
             <option>Abelling</option>
@@ -396,7 +396,7 @@
 
         <div class="form-group">
           <label><u>* If others, please identify.</u></label>
-          <input type="text" placeholder="">
+          <input type="text" id="indigenousOther" placeholder="">
         </div>
 
         <!-- LGBTQIA+ -->
@@ -712,7 +712,21 @@
       </div>
     </div>
 
+    <!--
     <button type="button" class="next-btn">Next &#10140;</button>
+    -->
+    <!-- Next Button -->
+      <div class="button-container">
+        <button class="next-btn" onclick="handleNext()">
+          Next <span>→</span>
+        </button>
+      </div>
+
+      <!-- Error notification container -->
+      <div id="error-notif" class="error-notif">
+        Please fill all required fields before proceeding.
+      </div>
+
 
     </div>
   </section>
