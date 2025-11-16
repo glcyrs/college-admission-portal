@@ -1,101 +1,120 @@
-console.log("✅ confirmation.js loaded successfully");
+// =====================================================
+// GRADE CARD DOWNLOAD ALERT
+// =====================================================
+const downloads = [
+  'assets/grades_form_1.pdf', // for the first card
+  'assets/grades_form_2.pdf'  // for the second card
+];
 
-// Wait until the "Next" button actually exists (because the section is dynamically injected)
-const confirmNextBtn = setInterval(() => {
-  const nextBtn = document.querySelector("#confirmation-section .next-btn");
-
-  if (nextBtn) {
-    console.log("✅ .next-btn found in Confirmation section, attaching click event");
-
-    nextBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      console.log("➡️ Confirmation Next button clicked — dispatching gotoStep(3)");
-
-      // Dispatch an event that the main script.js can catch
-      document.dispatchEvent(
-        new CustomEvent("gotoStep", { detail: { step: 3 } })
-      );
-    });
-
-    clearInterval(confirmNextBtn);
-  }
-}, 300);
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-
-  const nextBtn = document.querySelector(".next-btn");
-  nextBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    let isValid = true;
-
-    // Remove previous error highlights
-    document.querySelectorAll(".input-error").forEach(el => el.classList.remove("input-error"));
-
-    // Validate radio groups
-    const radioGroups = ["seniorhigh", "enrolled", "firsttime", "transfer", "graduate"];
-    radioGroups.forEach(name => {
-      const radios = document.getElementsByName(name);
-      if (![...radios].some(r => r.checked)) {
-        radios.forEach(r => r.classList.add("input-error")); // highlight
-        isValid = false;
-      }
-    });
-
-    // Validate text fields if "transfer" is yes
-    const transferYes = document.querySelector('input[name="transfer"][value="yes"]');
-    if (transferYes && transferYes.checked) {
-      const prevSchool = document.querySelector('input[placeholder="Enter previous school"]');
-      const year = document.querySelector('input[placeholder="Enter year"]');
-      if (!prevSchool.value.trim()) {
-        prevSchool.classList.add("input-error");
-        isValid = false;
-      }
-      if (!year.value.trim()) {
-        year.classList.add("input-error");
-        isValid = false;
-      }
-    }
-
-    // Validate dropdown if graduate yes
-    const graduateYes = document.querySelector('input[name="graduate"][value="yes"]');
-    const dropdown = document.querySelector(".dropdown");
-    if (graduateYes && graduateYes.checked) {
-      if (!dropdown.value || dropdown.value === "N/A") {
-        dropdown.classList.add("input-error");
-        isValid = false;
-      }
-    }
-
-    // Show notification
-    if (!isValid) {
-      showNotification("⚠️ Please fill out all required fields!", "error");
-    } else {
-      showNotification("All required information is complete! Proceeding...", "success");
-      // window.location.href = "nextpage.html";
-    }
+document.querySelectorAll('.grade-card').forEach((card, index) => {
+  card.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = downloads[index];
+    link.download = downloads[index].split('/').pop(); // set filename
+    link.click();
   });
-
-  // ======= NOTIFICATION FUNCTIONS =======
-  function showNotification(message, type = "error") {
-    const notification = document.getElementById("notification");
-    const text = document.getElementById("notification-text");
-    text.textContent = message;
-
-    notification.classList.remove("success", "error");
-    notification.classList.add(type);
-
-    notification.style.display = "block";
-
-    setTimeout(() => hideNotification(), 4000);
-  }
-
-  function hideNotification() {
-    document.getElementById("notification").style.display = "none";
-  }
-
 });
+
+// =====================================================
+// EXTRA FIELD TOGGLING
+// =====================================================
+document.getElementById('transferred-yes').addEventListener('change', () => {
+    document.getElementById('transfer-fields').classList.remove('hidden');
+});
+
+document.getElementById('transferred-no').addEventListener('change', () => {
+    document.getElementById('transfer-fields').classList.add('hidden');
+    document.getElementById('transferredFrom').value = '';
+    document.getElementById('transferredYear').value = '';
+});
+
+document.getElementById('bsu-yes').addEventListener('change', () => {
+    document.getElementById('bsu-field').classList.remove('hidden');
+});
+
+document.getElementById('bsu-no').addEventListener('change', () => {
+    document.getElementById('bsu-field').classList.add('hidden');
+});
+
+// =====================================================
+// CLEAR ERRORS WHEN USER TYPES OR CHANGES
+// =====================================================
+document.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('input', () => {
+        el.classList.remove('error');
+        const q = el.closest('.question');
+        if (q) q.classList.remove('error');
+        const notif = document.getElementById('error-notif');
+        notif.style.display = 'none';
+    });
+});
+
+// =====================================================
+// SHOW NOTIFICATION FUNCTION
+// =====================================================
+function showNotification(message) {
+    const notif = document.getElementById('error-notif');
+    notif.textContent = message;
+    notif.style.display = 'block';
+    notif.style.opacity = 1;
+
+    // Fade out after 4 seconds
+    setTimeout(() => {
+        notif.style.opacity = 0;
+        setTimeout(() => {
+            notif.style.display = 'none';
+        }, 500);
+    }, 4000);
+}
+
+// =====================================================
+// HANDLE NEXT BUTTON
+// =====================================================
+function handleNext() {
+    let error = false;
+
+    // Reset previous errors
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('error'));
+    document.querySelectorAll('input[type="text"], select').forEach(t => t.classList.remove('error'));
+
+    // Q1-Q3: required radio buttons
+    const q1 = document.querySelector('input[name="academicStatus"]:checked');
+    const q2 = document.querySelector('input[name="alreadyEnrolled"]:checked');
+    const q3 = document.querySelector('input[name="firstTimeApplying"]:checked');
+
+    if (!q1) { document.getElementById('q1').classList.add('error'); error = true; }
+    if (!q2) { document.getElementById('q2').classList.add('error'); error = true; }
+    if (!q3) { document.getElementById('q3').classList.add('error'); error = true; }
+
+    // Q4: transferred
+    const transferred = document.querySelector('input[name="transferred"]:checked');
+    if (!transferred) {
+        document.getElementById('q4').classList.add('error');
+        error = true;
+    } else if (transferred.value === "yes") {
+        const school = document.getElementById('transferredFrom');
+        const year = document.getElementById('transferredYear');
+        if (!school.value.trim()) { school.classList.add('error'); document.getElementById('q4').classList.add('error'); error = true; }
+        if (!year.value.trim()) { year.classList.add('error'); document.getElementById('q4').classList.add('error'); error = true; }
+    }
+
+    // Q5: BSU graduate
+    const bsu = document.querySelector('input[name="bsuGraduate"]:checked');
+    if (!bsu) {
+        document.getElementById('q5').classList.add('error');
+        error = true;
+    } else if (bsu.value === "yes") {
+        const school = document.getElementById('bsuSchool');
+        if (!school.value) { school.classList.add('error'); document.getElementById('q5').classList.add('error'); error = true; }
+    }
+
+    // Show error if any missing
+    if (error) {
+        showNotification("Please complete all required fields before proceeding.");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+    }
+
+    // Success → go to next page
+    window.location.href = "aap.html";
+}

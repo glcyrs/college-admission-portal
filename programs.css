@@ -7,7 +7,7 @@ body {
 
 /* HEADER */
 .header-section {
-  background: url('header.png') center center no-repeat;
+  background: url('assets/header.png') center center no-repeat;
   background-size: contain;
   width: 100vw;
   height: auto;
@@ -556,4 +556,17 @@ body {
 
 .error {
   border: 2px solid red;
+}
+
+/* highlight entire row */
+.row-error {
+  background-color: #ffe4e4;
+  border: 2px solid #ff5c5c;
+  transition: 0.2s;
+}
+
+/* highlight missing select */
+.error {
+  border: 2px solid #ff3b3b !important;
+  background-color: #fff0f0;
 }

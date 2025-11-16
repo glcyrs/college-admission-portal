@@ -1,77 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Batangas State University | College Admission</title>
+
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="confirmation.css">
   <link rel="stylesheet" href="readfirst.css">
   <link rel="stylesheet" href="aap.css">
-  <!--
-  <script defer src="script.js"></script>
-  -->
-  <script defer src="confirmation.js"></script>
 
-  
+  <link rel="stylesheet" href="confirmation.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
-    <!-- CONFIRMATION SECTION -->
-    <section id="confirmation-section" class="confirmation-section">
-        <div class="confirmation-box">
-            <p class="note"><strong>Note: (*) - Required</strong></p>
-            <p class="instruction">Kindly provide the necessary information.</p>
+ <!-- HEADER -->
+  <header class="header-section">
+  </header>
 
-            <ol class="confirmation-list">
-                <li>
-                    <span class="question">Academic Status*</span><br>
-                    <label class="option"><input type="radio" name="seniorhigh" value="Graduating Senior High School student of AY 2025-2026" class="required-field"> Graduating Senior High School student of AY 2025-2026</label>
-                    <label class="option"><input type="radio" name="seniorhigh" value="Graduated Senior High School Student" class="required-field"> Graduated Senior High School Student</label>
-                </li>
+  <!-- INFORMATION BOX -->
+  <div class="info-box">
+    <div class="info-content">
+      <img src="assets/info.png" alt="Info Icon" class="info-icon">
+      <p>
+         To stay updated on the progress of your application, track important updates,
+        and view any additional information related to your application, we encourage
+        you to visit our <a href="index.html" target="_blank" class="program-link">Applicant's Portal</a> 
+        The portal is a convenient
+        platform designed to help you manage your application journey with us. To verify
+        your application or forgot your Application Number / PIN, please click
+        <a href="landing.html" target="_blank" class="program-link">here</a>.
+      </p>
+    </div>
+  </div>
 
-                <li>
-                    <span class="question">Is the applicant already enrolled (or was enrolled) in a college program in BatStateU or in other schools?*</span><br>
-                    <label class="option"><input type="radio" name="enrolled" value="yes" class="required-field"> Yes</label>
-                    <label class="option"><input type="radio" name="enrolled" value="no" class="required-field"> No</label>
-                </li>
+  <!-- ACADEMIC YEAR SECTION -->
+  <section class="ay-section">
+    <h2>AY 2026-2027</h2>
 
-                <li>
-                    <span class="question">Is this the applicant’s first time to apply for BatStateU College Admission?*</span><br>
-                    <label class="option"><input type="radio" name="firsttime" value="yes" class="required-field"> Yes</label>
-                    <label class="option"><input type="radio" name="firsttime" value="no" class="required-field"> No</label>
-                </li>
+    <div class="grades-section">
+      <div class="grades-title">Grades Form Template</div>
 
-                <li>
-                    <span class="question">Have you ever transferred during your Senior High School?*</span><br>
-                    <label class="option"><input type="radio" name="transfer" value="yes"> Yes, previously from:</label><br>
-                    <input type="text" class="text-field" placeholder="Enter previous school"><br>
-                    <label class="option">In what year?</label><br>
-                    <input type="text" class="text-field" placeholder="Enter year"><br>
-                    <label class="option"><input type="radio" name="transfer" value="no"> No</label>
-                </li>
-
-                <li>
-                    <span class="question">Are you a graduate of Batangas State University Laboratory/Integrated School?*</span><br>
-                    <label class="option"><input type="radio" name="graduate" value="yes"> Yes, from:</label><br>
-                    <select class="dropdown">
-                        <option value="N/A">N/A</option>
-                        <option value="Integrated School">Batangas State University Integrated School</option>
-                        <option value="Laboratory School">Batangas State University Laboratory School</option>
-                    </select><br>
-                    <label class="option"><input type="radio" name="graduate" value="no"> No</label>
-                </li>
-            </ol>
-
-            <button class="next-btn">Next &#10140;</button>
+      <div class="grades-box-container">
+        <div class="grade-card">
+          <div class="grade-header">
+            <img src="assets/download-icon.png" alt="Download">
+            <h3>Grades Form 1 (Regular Admission)</h3>
+          </div>
+          <p class ="download-text">
+            <i class="fa-solid fa-circle-info"></i>
+            Click to download
+          </p>
         </div>
-    </section>
 
-    <div id="notification" class="notification">
-        <span id="notification-text"></span>
-        <span class="close-btn" onclick="hideNotification()">×</span>
+        <div class="grade-card">
+          <div class = "grade-header">
+            <img src="assets/download-icon.png" alt="Download">
+            <h3>Grades Form 2 (ALS Graduation)</h3>
+          </div>
+          <p class ="download-text">
+            <i class="fa-solid fa-circle-info"></i>
+            Click to download
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION STEPS -->
+  <section class="steps-section">
+    <div class="steps">
+      <div class="step"><span><i class="fa-solid fa-house"></i></span><p>Welcome</p></div>
+      <div class="step"><span><i class="fa-solid fa-circle-info"></i></span><p>Read First</p></div>
+      <div class="step active"><span>?</span><p>Confirmation</p></div>
+      <div class="step"><span>?</span><p>AAP</p></div>
+      <div class="step"><span>1</span><p>Personal</p></div>
+      <div class="step"><span>2</span><p>Education and Attachments</p></div>
+      <!--
+      <div class="step"><span>3</span><p>Attachments</p></div>
+      -->
+      <div class="step"><span>3</span><p>Programs</p></div>
+      <div class="step"><span>4</span><p>Form Review</p></div>
+      <div class="step"><span>5</span><p>Submit</p></div>
+    </div>
+  </section>
+
+  <!-- CONFIRMATION SECTION -->
+ <div class="container">
+<!--<div id="notification" class="notification">
+            <div class="notification-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+            <div class="notification-content">
+                <h3>Please complete all required fields</h3>
+                <p>All questions marked with (*) must be answered before proceeding.</p>
+            </div>
+        </div>-->
+
+        <div class="note">
+            <p><span class="required">Note: (*) - Required</span></p>
+            <p>Kindly provide the necessary information.</p>
+        </div>
+
+        <!-- Q1 -->
+        <div id="q1" class="question">
+            <span class="question-label">1. Academic Status*</span>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="graduating" name="academicStatus" value="graduating">
+                    <label for="graduating">Graduating Senior High School student of AY 2025-2026</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="graduated" name="academicStatus" value="graduated">
+                    <label for="graduated">Graduated Senior High School Student</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div id="q2" class="question">
+            <span class="question-label">2. Is the applicant already enrolled...?*</span>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="enrolled-yes" name="alreadyEnrolled" value="yes">
+                    <label for="enrolled-yes">Yes</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="enrolled-no" name="alreadyEnrolled" value="no">
+                    <label for="enrolled-no">No</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div id="q3" class="question">
+            <span class="question-label">3. First time applying?*</span>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="first-yes" name="firstTimeApplying" value="yes">
+                    <label for="first-yes">Yes</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="first-no" name="firstTimeApplying" value="no">
+                    <label for="first-no">No</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div id="q4" class="question">
+            <span class="question-label">4. Have you ever transferred?*</span>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="transferred-yes" name="transferred" value="yes">
+                    <label for="transferred-yes">Yes, previously from:</label>
+                </div>
+
+                <div id="transfer-fields" class="sub-field hidden">
+                    <input type="text" id="transferredFrom" placeholder="Enter previous school">
+                    <span class="sub-label">In what year?</span>
+                    <input type="text" id="transferredYear" placeholder="Enter year">
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="transferred-no" name="transferred" value="no">
+                    <label for="transferred-no">No</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div id="q5" class="question">
+            <span class="question-label">5. Are you a BSU graduate?*</span>
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="bsu-yes" name="bsuGraduate" value="yes">
+                    <label for="bsu-yes">Yes, from:</label>
+                </div>
+
+                <div id="bsu-field" class="sub-field hidden">
+                    <select id="bsuSchool">
+                        <option value="Batangas State University Integrated School">Batangas State University Integrated School</option>
+                        <option value="Batangas State University Integrated School">Batangas State University Laboratory School</option>
+                    </select>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="bsu-no" name="bsuGraduate" value="no">
+                    <label for="bsu-no">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="btn-next" onclick="handleNext()">
+                Next <span>→</span>
+            </button>
+        </div>
     </div>
 
+     <!-- Error notification container -->
+<div id="error-notif" class="error-notif">
+  Please fill all required fields before proceeding.
+</div>
+
+
+  <script defer src="confirmation.js"></script>
 </body>
 </html>

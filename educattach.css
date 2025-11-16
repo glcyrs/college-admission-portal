@@ -8,7 +8,7 @@ body {
 
 /* HEADER */
 .header-section {
-  background: url('header.png') center center no-repeat;
+  background: url('assets/header.png') center center no-repeat;
   background-size: contain;
   width: 100vw;
   height: auto;
@@ -987,4 +987,25 @@ input[type="checkbox"] {
 
 #notification {
   transition: opacity 0.3s ease;
+}
+
+/* Error highlighting for grade tables */
+.content1.input-error,
+.content2.input-error {
+  border: 2px solid #dc3535 !important;
+  background-color: #fff6f6 !important;
+}
+
+/* Optional: Also highlight the tables themselves */
+.grades-table.input-error,
+.grades-table2.input-error {
+  border: 2px solid #dc3535 !important;
+}
+
+/* Optional: Highlight individual inputs inside tables when empty */
+.grades-table input.input-error,
+.grades-table2 input.input-error,
+.grades-table2 select.input-error {
+  border: 2px solid #dc3535 !important;
+  background-color: #fff6f6 !important;
 }

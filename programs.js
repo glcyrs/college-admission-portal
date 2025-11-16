@@ -1,11 +1,24 @@
-document.querySelectorAll('.grade-card').forEach(card => {
+const downloads = [
+  'assets/grades_form_1.pdf', // for the first card
+  'assets/grades_form_2.pdf'  // for the second card
+];
+
+document.querySelectorAll('.grade-card').forEach((card, index) => {
   card.addEventListener('click', () => {
-    alert('Downloading form...');
+    const link = document.createElement('a');
+    link.href = downloads[index];
+    link.download = downloads[index].split('/').pop(); // set filename
+    link.click();
   });
 });
 
 // ====== Map pages to step index ======
 const pageToStep = {
+  "index.html": 0,
+  "readfirst.html": 1,
+  "confirmation.html": 2,
+  "aap.html": 3,
+  "personal.html": 4,
   "educattach.html": 5,
   "programs.html": 6,
   "form.html": 7,
@@ -37,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         step.classList.remove("clickable");
         step.style.pointerEvents = "none";
-        step.style.opacity = "0.5"; // locked steps look dim
+        step.style.opacity = "1"; // locked steps look dim
       }
     });
 
@@ -75,6 +88,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (typeof showSection === "function") showSection(currentStep);
 
       switch (index) {
+        case 0: window.location.href = "index.html"; break;
+        case 1: window.location.href = "readfirst.html"; break;
+        case 2: window.location.href = "confirmation.html"; break;
+        case 3: window.location.href = "aap.html"; break;
+        case 4: window.location.href = "personal.html"; break;
         case 5: window.location.href = "educattach.html"; break;
         case 6: window.location.href = "programs.html"; break;
         case 7: window.location.href = "form.html"; break;
@@ -219,20 +237,37 @@ nextBtn.addEventListener('click', (e) => {
   let allFilled = true;
 
   formFields.forEach(field => {
+    const row = field.closest(".choice"); // get full table row
+
     if (!field.value) {
       allFilled = false;
-      field.classList.add('error'); // optional highlight
+
+      field.classList.add('error');        // highlight select
+      row.classList.add('row-error');      // highlight whole row
     } else {
       field.classList.remove('error');
+      row.classList.remove('row-error');
     }
   });
 
   if (!allFilled) {
-    e.preventDefault(); // prevent navigation
+    e.preventDefault();
     showError();
   } else {
     window.location.href = 'form.html';
   }
+});
+
+// ===== REMOVE HIGHLIGHT WHEN USER FIXES ANSWER =====
+formFields.forEach(field => {
+  field.addEventListener('change', () => {
+    const row = field.closest('.choice');
+
+    if (field.value) {
+      field.classList.remove('error');
+      if (row) row.classList.remove('row-error');
+    }
+  });
 });
 
 function showError() {

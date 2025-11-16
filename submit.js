@@ -1,11 +1,24 @@
-document.querySelectorAll('.grade-card').forEach(card => {
+const downloads = [
+  'assets/grades_form_1.pdf', // for the first card
+  'assets/grades_form_2.pdf'  // for the second card
+];
+
+document.querySelectorAll('.grade-card').forEach((card, index) => {
   card.addEventListener('click', () => {
-    alert('Downloading form...');
+    const link = document.createElement('a');
+    link.href = downloads[index];
+    link.download = downloads[index].split('/').pop(); // set filename
+    link.click();
   });
 });
 
 // ====== Map pages to step index ======
 const pageToStep = {
+  "index.html": 0,
+  "readfirst.html": 1,
+  "confirmation.html": 2,
+  "aap.html": 3,
+  "personal.html": 4,
   "educattach.html": 5,
   "programs.html": 6,
   "form.html": 7,

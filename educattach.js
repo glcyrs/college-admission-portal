@@ -1,11 +1,24 @@
-document.querySelectorAll('.grade-card').forEach(card => {
+const downloads = [
+  'assets/grades_form_1.pdf', // for the first card
+  'assets/grades_form_2.pdf'  // for the second card
+];
+
+document.querySelectorAll('.grade-card').forEach((card, index) => {
   card.addEventListener('click', () => {
-    alert('Downloading form...');
+    const link = document.createElement('a');
+    link.href = downloads[index];
+    link.download = downloads[index].split('/').pop(); // set filename
+    link.click();
   });
 });
 
 // ====== Map pages to step index ======
 const pageToStep = {
+  "index.html": 0,
+  "readfirst.html": 1,
+  "confirmation.html": 2,
+  "aap.html": 3,
+  "personal.html": 4,
   "educattach.html": 5,
   "programs.html": 6,
   "form.html": 7,
@@ -320,6 +333,73 @@ window.removeFile = function (fileNumber) {
       }
     });
 
+    // Check grade table inputs (Junior High School)
+    const gradeInputsJHS = document.querySelectorAll('.grades-table input[type="number"]');
+    let hasEmptyGrades = false;
+    gradeInputsJHS.forEach(input => {
+      if (!input.value || input.value.trim() === "" || input.value === "0") {
+        input.classList.add("input-error");
+        hasEmptyGrades = true;
+        isValid = false;
+      }
+    });
+    
+    // Highlight content1 container if JHS grades are empty
+    if (hasEmptyGrades) {
+      const content1Box = document.querySelector('.content1');
+      if (content1Box) content1Box.classList.add("input-error");
+    }
+
+    // Check Senior High School grade inputs and selects
+    const gradeInputsSHS = document.querySelectorAll('.grades-table2 input[type="number"]');
+    const gradeSelects = document.querySelectorAll('.grades-table2 select');
+    let hasEmptySHSGrades = false;
+
+    gradeInputsSHS.forEach(input => {
+      // Skip validation if the corresponding N/A checkbox is checked
+      const row = input.closest('tr');
+      const naCheckbox = row ? row.querySelector('input[type="checkbox"]') : null;
+      
+      if (naCheckbox && naCheckbox.checked) {
+        return; // Skip this input if N/A is checked
+      }
+      
+      if (!input.value || input.value.trim() === "" || input.value === "0") {
+        input.classList.add("input-error");
+        hasEmptySHSGrades = true;
+        isValid = false;
+      }
+    });
+
+    gradeSelects.forEach(select => {
+      // Only validate selects that are visible/relevant
+      const row = select.closest('tr');
+      const naCheckbox = row ? row.querySelector('input[type="checkbox"]') : null;
+      
+      if (naCheckbox && naCheckbox.checked) {
+        return; // Skip this select if N/A is checked
+      }
+      
+      // Only flag as error if a select is used but empty
+      if (select.value && select.value.trim() !== "") {
+        // Select has a value, no error
+      } else {
+        // Check if alternative subject was needed but not selected
+        // You can add more specific logic here if needed
+      }
+    });
+
+    // Highlight content2 container if SHS grades are empty
+    if (hasEmptySHSGrades) {
+      const content2Boxes = document.querySelectorAll('.content2');
+      content2Boxes.forEach(box => {
+        // Only highlight the one with grades-table2
+        if (box.querySelector('.grades-table2')) {
+          box.classList.add("input-error");
+        }
+      });
+    }
+
     if (!isValid) {
       // highlight missing statuses visually
       Object.keys(uploadedFiles).forEach(key => {
@@ -333,12 +413,12 @@ window.removeFile = function (fileNumber) {
         }
       });
 
-      showNotification("Please fill out all required fields and upload all attachments!", "error");
+      showNotification("Please fill out all required fields, complete all grades, and upload all attachments!", "error");
       return;
     }
 
     // Proceed action (uncomment or change to your navigation)
-       window.location.href = "programs.html";
+    window.location.href = "programs.html";
   });
 })();
 
