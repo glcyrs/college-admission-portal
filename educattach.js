@@ -1,13 +1,13 @@
 const downloads = [
-  'assets/grades_form_1.pdf', // for the first card
-  'assets/grades_form_2.pdf'  // for the second card
+  'assets/grades_form_1.pdf',
+  'assets/grades_form_2.pdf'
 ];
 
 document.querySelectorAll('.grade-card').forEach((card, index) => {
   card.addEventListener('click', () => {
     const link = document.createElement('a');
     link.href = downloads[index];
-    link.download = downloads[index].split('/').pop(); // set filename
+    link.download = downloads[index].split('/').pop();
     link.click();
   });
 });
@@ -23,7 +23,6 @@ const pageToStep = {
   "programs.html": 6,
   "form.html": 7,
   "submit.html": 8,
-  // add more pages if needed
 };
 
 // ====== Get current page ======
@@ -40,10 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ====== Update step UI ======
   function updateSteps() {
     steps.forEach((step, index) => {
-      // ACTIVE step (green)
       step.classList.toggle("active", index === currentStep);
 
-      // CLICKABLE or LOCKED
       if (index <= maxUnlockedStep) {
         step.classList.add("clickable");
         step.style.pointerEvents = "auto";
@@ -55,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Save progress
     localStorage.setItem("currentStep", currentStep);
     localStorage.setItem("maxUnlockedStep", maxUnlockedStep);
   }
@@ -63,15 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // ====== Step click navigation ======
   steps.forEach((step, index) => {
     step.addEventListener("click", () => {
-      if (index > maxUnlockedStep) return; // block locked steps
+      if (index > maxUnlockedStep) return;
 
       currentStep = index;
       updateSteps();
 
-      // Optional: show section if you have this function
       if (typeof showSection === "function") showSection(currentStep);
 
-      // Navigate pages based on step
       switch (index) {
       case 0: window.location.href = "welcome.html"; break;
       case 1: window.location.href = "readfirst.html"; break;
@@ -82,17 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
       case 6: window.location.href = "programs.html"; break;
       case 7: window.location.href = "form.html"; break;
       case 8: window.location.href = "submit.html"; break;
-        // Add more steps/pages here
       }
     });
   });
 
-  // ====== Initial render ======
   updateSteps();
 });
 
 // =====================================================
-// FILE STORAGE (store file + type)
+// FILE STORAGE - Now with localStorage persistence
 // =====================================================
 let uploadedFiles = {
   1: null,
@@ -102,10 +94,57 @@ let uploadedFiles = {
   5: null
 };
 
+// Load saved file metadata from localStorage on page load
+function loadSavedFiles() {
+  const savedFiles = localStorage.getItem("uploadedFiles");
+  if (savedFiles) {
+    try {
+      const parsed = JSON.parse(savedFiles);
+      // Restore file metadata (name, type, size) but not the actual File object
+      Object.keys(parsed).forEach(key => {
+        if (parsed[key]) {
+          uploadedFiles[key] = parsed[key];
+          // Update the UI to show the file is uploaded
+          const status = document.getElementById(`status${key}`);
+          if (status) {
+            status.innerHTML = `
+              <i class="fa-solid fa-circle-check" style="color:#28a745;"></i>
+              ${escapeHtml(parsed[key].fileName)}
+            `;
+          }
+          // Remove error state
+          const input = document.getElementById(`file${key}`);
+          if (input) {
+            const uploadBox = input.closest(".upload-controls");
+            if (uploadBox) uploadBox.classList.remove("input-error");
+          }
+        }
+      });
+      updateFileList();
+    } catch (e) {
+      console.error("Error loading saved files:", e);
+    }
+  }
+}
+
+// Save file metadata to localStorage
+function saveFilesToStorage() {
+  const filesToSave = {};
+  Object.keys(uploadedFiles).forEach(key => {
+    if (uploadedFiles[key]) {
+      const { file, type } = uploadedFiles[key];
+      filesToSave[key] = {
+        fileName: file.name,
+        fileSize: file.size,
+        type: type
+      };
+    }
+  });
+  localStorage.setItem("uploadedFiles", JSON.stringify(filesToSave));
+}
+
 // =====================================================
 // HANDLE FILE UPLOAD
-// - label param optional. If not passed, reads data-type from the input element.
-// - removes red error highlights for that upload box when file is selected
 // =====================================================
 function handleFileUpload(num, label) {
   const input = document.getElementById(`file${num}`);
@@ -116,7 +155,6 @@ function handleFileUpload(num, label) {
     const type = label || (input && input.dataset && input.dataset.type) || "Required";
     uploadedFiles[num] = { file, type };
 
-    // update status text
     if (status) {
       status.innerHTML = `
         <i class="fa-solid fa-circle-check" style="color:#28a745;"></i>
@@ -124,17 +162,16 @@ function handleFileUpload(num, label) {
       `;
     }
 
-    // Remove red highlight from upload box (if any)
     const uploadBox = input ? input.closest(".upload-controls") : null;
     if (uploadBox) uploadBox.classList.remove("input-error");
 
-    // Also remove 'input-error' from any required text input inside the same upload-controls area
     if (uploadBox) {
       const requiredInside = uploadBox.querySelectorAll(".form-input.input-error");
       requiredInside.forEach(el => el.classList.remove("input-error"));
     }
 
     updateFileList();
+    saveFilesToStorage(); // Save to localStorage
   }
 }
 
@@ -153,14 +190,18 @@ function updateFileList() {
     if (!slot) return;
 
     noFiles = false;
-    const { file, type } = slot;
+    
+    // Handle both old File objects and saved metadata
+    const fileName = slot.file ? slot.file.name : slot.fileName;
+    const fileSize = slot.file ? slot.file.size : slot.fileSize;
+    const type = slot.type;
 
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${escapeHtml(key)}</td>
       <td>${escapeHtml(type)}</td>
-      <td>${escapeHtml(file.name)}</td>
-      <td>${(file.size / 1024).toFixed(1)} KB</td>
+      <td>${escapeHtml(fileName)}</td>
+      <td>${(fileSize / 1024).toFixed(1)} KB</td>
       <td style="text-align:center;">
         <i class="fa-solid fa-circle-check" style="color:#28a745;"></i>
       </td>
@@ -182,7 +223,6 @@ function updateFileList() {
   }
 }
 
-// small helper to avoid HTML injection in file names/types
 function escapeHtml(str) {
   if (str === null || str === undefined) return "";
   return String(str)
@@ -194,15 +234,12 @@ function escapeHtml(str) {
 }
 
 // =====================================================
-// NOTIFICATION/ALERT SYSTEM
-// - showNotification(message, status, autoHideMs)
-// - status: "error"|"success"|undefined
+// NOTIFICATION
 // =====================================================
 function showNotification(message) {
   let noti = document.getElementById("notification");
   let notiText;
 
-  // If notification container does not exist, create one
   if (!noti) {
     noti = document.createElement("div");
     noti.id = "notification";
@@ -219,31 +256,24 @@ function showNotification(message) {
     noti.style.fontSize = "15px";
     noti.style.fontWeight = "500";
 
-    // RED ALERT STYLE
     noti.style.background = "#ffe3e3";
     noti.style.color = "#c20000";
 
     notiText = document.createElement("div");
     notiText.id = "notification-text";
 
-    noti.appendChild(notiText); // NO CLOSE BUTTON ANYMORE
+    noti.appendChild(notiText);
     document.body.appendChild(noti);
   } else {
     notiText = document.getElementById("notification-text");
   }
 
-  // Set message
   notiText.innerText = message;
-
-  // Ensure red styling even if the element is reused
   noti.style.background = "#ffe3e3";
   noti.style.border = "1px solid #ff9b9b";
   noti.style.color = "#c20000";
-
-  // Show it
   noti.style.display = "flex";
 
-  // Auto-hide after 4 seconds
   if (noti._hideTimeout) clearTimeout(noti._hideTimeout);
 
   noti._hideTimeout = setTimeout(() => {
@@ -252,8 +282,7 @@ function showNotification(message) {
 }
 
 // =====================================================
-// REMOVE FILE (with confirm box fallback)
-// - When removing, add red error highlight back to upload box
+// REMOVE FILE
 // =====================================================
 window.removeFile = function (fileNumber) {
   const confirmBox = document.getElementById("confirmBox");
@@ -267,13 +296,13 @@ window.removeFile = function (fileNumber) {
     const status = document.getElementById(`status${fileNumber}`);
     if (status) status.textContent = "No file chosen";
 
-    // add input-error class back to upload box to indicate missing
     if (input) {
       const uploadBox = input.closest(".upload-controls");
       if (uploadBox) uploadBox.classList.add("input-error");
     }
 
     updateFileList();
+    saveFilesToStorage(); // Save to localStorage
     showNotification("File removed. Please upload a file for this slot.", "error");
   };
 
@@ -285,15 +314,76 @@ window.removeFile = function (fileNumber) {
     };
     confirmNo.onclick = () => confirmBox.style.display = "none";
   } else {
-    // no confirm modal available -> remove immediately
     doRemove();
   }
 };
 
-// =====================================================
+// ===============================
+// SAVE/RESTORE INPUTS & TABLES
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  // Load saved files first
+  loadSavedFiles();
+  
+  const allFields = document.querySelectorAll("input, select, textarea");
+
+  allFields.forEach(field => {
+    const key = `autosave_${field.id || field.name}`;
+    const saved = localStorage.getItem(key);
+
+    if (saved !== null) {
+      if (field.type === "checkbox") field.checked = saved === "true";
+      else if (field.type === "radio") field.checked = field.value === saved;
+      else if (field.type !== "file") field.value = saved; // Don't restore file inputs
+    }
+
+    const saveField = () => {
+      if (field.type === "checkbox") localStorage.setItem(key, field.checked);
+      else if (field.type === "radio") { if (field.checked) localStorage.setItem(key, field.value); }
+      else if (field.type !== "file") localStorage.setItem(key, field.value); // Don't save file inputs
+    };
+    field.addEventListener("input", saveField);
+    field.addEventListener("change", saveField);
+  });
+
+  const tableInputs = document.querySelectorAll('.grades-table input[type="number"], .grades-table2 input[type="number"], .grades-table2 select');
+
+  tableInputs.forEach(input => {
+    const key = `autosave_${input.id || input.name}`;
+    const saved = localStorage.getItem(key);
+    if (saved !== null) input.value = saved;
+
+    const saveTableInput = () => { localStorage.setItem(key, input.value); };
+    input.addEventListener("input", saveTableInput);
+    input.addEventListener("change", saveTableInput);
+  });
+});
+
+// ===============================
+// AUTO-UNLOCK NEXT STEP
+// ===============================
+const thisStep = pageToStep[currentPage];
+let maxStep = parseInt(localStorage.getItem("maxUnlockedStep")) || 0;
+if (thisStep > maxStep) localStorage.setItem("maxUnlockedStep", thisStep);
+
+// ===============================
+// ENABLE CLICKING PREVIOUS STEPS
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".step").forEach((step, index) => {
+    step.addEventListener("click", () => {
+      const maxUnlocked = parseInt(localStorage.getItem("maxUnlockedStep")) || 0;
+      if (index <= maxUnlocked) {
+        const page = Object.keys(pageToStep).find(p => pageToStep[p] === index);
+        if (page) window.location.href = page;
+      }
+    });
+  });
+});
+
+// ===============================
 // FORM VALIDATION & NEXT BUTTON
-// - Single consolidated next-button handler
-// =====================================================
+// ===============================
 (function setupNextButton() {
   const nextBtn = document.querySelector(".next-btn");
   if (!nextBtn) return;
@@ -304,10 +394,8 @@ window.removeFile = function (fileNumber) {
     const requiredInputs = document.querySelectorAll(".form-input[required]");
     let isValid = true;
 
-    // Remove previous error highlights
     document.querySelectorAll(".input-error").forEach(el => el.classList.remove("input-error"));
 
-    // Check required inputs
     requiredInputs.forEach(input => {
       if (!input.value || !input.value.trim()) {
         input.classList.add("input-error");
@@ -315,7 +403,6 @@ window.removeFile = function (fileNumber) {
       }
     });
 
-    // Check file uploads (use uploadedFiles to reflect actual uploads)
     Object.keys(uploadedFiles).forEach(key => {
       if (!uploadedFiles[key]) {
         const fileInput = document.getElementById(`file${key}`);
@@ -333,7 +420,6 @@ window.removeFile = function (fileNumber) {
       }
     });
 
-    // Check grade table inputs (Junior High School)
     const gradeInputsJHS = document.querySelectorAll('.grades-table input[type="number"]');
     let hasEmptyGrades = false;
     gradeInputsJHS.forEach(input => {
@@ -344,26 +430,20 @@ window.removeFile = function (fileNumber) {
       }
     });
     
-    // Highlight content1 container if JHS grades are empty
     if (hasEmptyGrades) {
       const content1Box = document.querySelector('.content1');
       if (content1Box) content1Box.classList.add("input-error");
     }
 
-    // Check Senior High School grade inputs and selects
     const gradeInputsSHS = document.querySelectorAll('.grades-table2 input[type="number"]');
     const gradeSelects = document.querySelectorAll('.grades-table2 select');
     let hasEmptySHSGrades = false;
 
     gradeInputsSHS.forEach(input => {
-      // Skip validation if the corresponding N/A checkbox is checked
       const row = input.closest('tr');
       const naCheckbox = row ? row.querySelector('input[type="checkbox"]') : null;
-      
-      if (naCheckbox && naCheckbox.checked) {
-        return; // Skip this input if N/A is checked
-      }
-      
+      if (naCheckbox && naCheckbox.checked) return;
+
       if (!input.value || input.value.trim() === "" || input.value === "0") {
         input.classList.add("input-error");
         hasEmptySHSGrades = true;
@@ -371,45 +451,18 @@ window.removeFile = function (fileNumber) {
       }
     });
 
-    gradeSelects.forEach(select => {
-      // Only validate selects that are visible/relevant
-      const row = select.closest('tr');
-      const naCheckbox = row ? row.querySelector('input[type="checkbox"]') : null;
-      
-      if (naCheckbox && naCheckbox.checked) {
-        return; // Skip this select if N/A is checked
-      }
-      
-      // Only flag as error if a select is used but empty
-      if (select.value && select.value.trim() !== "") {
-        // Select has a value, no error
-      } else {
-        // Check if alternative subject was needed but not selected
-        // You can add more specific logic here if needed
-      }
-    });
-
-    // Highlight content2 container if SHS grades are empty
     if (hasEmptySHSGrades) {
       const content2Boxes = document.querySelectorAll('.content2');
       content2Boxes.forEach(box => {
-        // Only highlight the one with grades-table2
-        if (box.querySelector('.grades-table2')) {
-          box.classList.add("input-error");
-        }
+        if (box.querySelector('.grades-table2')) box.classList.add("input-error");
       });
     }
 
     if (!isValid) {
-      // highlight missing statuses visually
       Object.keys(uploadedFiles).forEach(key => {
         if (!uploadedFiles[key]) {
           const st = document.getElementById(`status${key}`);
-          if (st) {
-            st.innerHTML = `
-              <i class="fa-solid fa-circle-xmark" style="color:#dc3545;"></i> Missing file
-            `;
-          }
+          if (st) st.innerHTML = `<i class="fa-solid fa-circle-xmark" style="color:#dc3545;"></i> Missing file`;
         }
       });
 
@@ -417,12 +470,8 @@ window.removeFile = function (fileNumber) {
       return;
     }
 
-    // Proceed action (uncomment or change to your navigation)
     window.location.href = "programs.html";
   });
 })();
 
-// =====================================================
-// Initialize: optionally call updateFileList to show initial state
-// =====================================================
 updateFileList();

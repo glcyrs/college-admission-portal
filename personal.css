@@ -1,3 +1,254 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* HEADER */
+.header-section {
+  background: url('header.png') center center no-repeat;
+  background-size: contain;
+  width: 100vw;
+  height: auto;
+  aspect-ratio: 2000 / 601;
+  background-attachment: scroll;
+  background-color: white;
+}
+
+/* INFORMATION BOX */
+.info-box {
+  border-left: 6px solid #5BC0DE;
+  border: 4px solid #EEEEEE;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 40px auto;
+  width: 90%;
+  background-color: #FFFFFF;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.info-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.info-content .info-icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  margin-top: 0.2em;
+}
+
+.info-content p {
+  margin: 0;
+}
+
+.info-box a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.info-box a:hover {
+  text-decoration: underline;
+}
+
+/* AY SECTION */
+.ay-section {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 25px ;
+}
+
+.grades-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 60px auto;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.grades-title {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #EEEEEE;
+  padding: 5px 15px;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.grades-box-container {
+  border: 4px solid #EEEEEE;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  padding: 50px 30px 40px;
+  width: 92%;
+  margin:0 auto;
+  display: flex;
+  justify-content:center;
+  align-items: stretch;
+  column-gap: 350px;
+  row-gap: 30px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.grade-card {
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  padding: 20px;
+  flex: 0 1 450px;
+  text-align: center;
+  transition: transform 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.grade-card:hover {
+  transform: scale(1.05);
+}
+
+.grade-card img {
+  width: 40px;
+  margin-bottom: 10px;
+}
+
+.grade-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.grade-header img {
+  width: 60px;
+  height: auto;
+}
+
+.grade-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.download-text {
+  color: #656565;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top:auto;
+}
+
+.download-text i {
+  color: #656565;
+  font-size: 1em;
+}
+
+/* STEPS */
+.steps-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 75px;
+  position: relative;
+  align-items: center;
+  height: 70px;
+}
+
+/* line behind the circles */
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 50px; /* margin from left */
+  right: 50px; /* margin from right */
+  height: 2px;
+  background-color: #ccc;
+  z-index: -1; /* put behind the step circles */
+  transform: translateY(-50%); /* perfectly center line vertically */
+}
+
+@media (max-width: 900px) {
+  .steps::before {
+    display: none;
+  }
+}
+
+/* STEP CIRCLES */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #777;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.step span {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  transition: all 0.3s;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.step i {
+  font-size: 17px;
+}
+
+/* ACTIVE STEP */
+.step.active span {
+  background-color: #28a745; /* green */
+  border-color: #1a9737;
+  color: #fff;
+}
+
+.step.active p {
+  color: #28a745;
+}
+
+/* body */
+.container {
+    width: calc(100% - 60px);       
+    margin: 0 auto;             /* center horizontally */
+    background-color: white;
+    border-radius: 8px;
+    border: 2px solid #7b7b7b6d; 
+    padding: 20px;          /* optional internal padding */
+    box-sizing: border-box; /* include padding in width/height */
+}
+
 .personal-section {
   display: flex;
   justify-content: center;
@@ -1075,47 +1326,28 @@ label.no-underline {
   display: none;
 }
 
-
-.error-notif {
-  display: none; /* hidden by default */
+/* Notification box */
+.notification {
   position: fixed;
-  top: 20px;          /* distance from top */
+  top: 20px;
   left: 50%;
-  transform: translateX(-50%); /* center horizontally */
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 15px 25px;
-  border: 1px solid #f5c6cb;
+  transform: translate(-50%);
+  background-color: #dc3535; /* Red for error */
+  color: white;
+  padding: 15px 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: none;
   z-index: 1000;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  min-width: 250px;
+  font-family: sans-serif;
+  text-align: center;
 }
 
-.error {
-  border: 2px solid #dc3535;
-  background-color: #fff0f0;
+.notification.success {
+  background-color: #28a745; /* Green for success */
 }
 
-.question {
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
+#notification {
+  transition: opacity 0.3s ease;
 }
-
-.question.error {
-    background: #fef2f2;
-    border: 2px solid #dc3535;
-}
-/* ----*/
-
-
-input.error,
-select.error,
-.radio-group .error {
-  border: 2px solid #dc3535;
-  background-color: #f8d7da;
-}
-
