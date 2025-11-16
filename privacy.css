@@ -22,18 +22,19 @@ body {
 
 .notice-card {
     background: #fff;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 30px;
     margin-bottom: 30px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
-
+/*
 h1 {
   text-align: left;
   margin-bottom: 10px;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #E5E5E5;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  width: 100%;
 }
 
 h2 {
@@ -43,6 +44,40 @@ h2 {
     margin-bottom: 5px;
     color: #000;
 }
+*/
+
+.h1-wrapper {
+  width: 100%;           /* wrapper full width */
+  margin-bottom: 20px;   /* spacing below */
+}
+
+.h1-wrapper h1 {
+  text-align: left;
+  margin: 0;             /* remove default margin so line is independent */
+  font-size: 25px;      /* adjust font size as needed */
+  margin-bottom: 10px;
+  font-weight: normal;
+  font-family: 'Roboto', sans-serif;
+}
+
+.h1-line {
+  height: 2px;                    /* thickness of the line */
+  background-color: #E5E5E5;      /* line color */
+  border-top-left-radius: 8px;    /* optional rounded corners */
+  border-top-right-radius: 8px;
+  width: 100%;                     /* stretch full width */
+  margin-top: 5px;    
+  position: relative; left: -30px; width: calc(100% + 60px);
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 550;
+  margin-bottom: 5px;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+}
 
 p {
     font-size: 13px;
@@ -50,6 +85,7 @@ p {
     color: #333;
     margin-bottom: 15px;
     text-align: justify;
+    font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -63,16 +99,16 @@ a:hover {
 
 .continue-btn {
     background-color: #f0f0f0;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 30px;
+    border:2px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 6px 20px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 20%;
     margin-top: 20px;
     transition: background-color 0.2s;
 }
@@ -82,14 +118,18 @@ a:hover {
 }
 
 .continue-btn::after {
-    content: '→';
+    content: "\2794";
     font-size: 16px;
     margin-left: 8px;
 }
+.button-container {
+    text-align: right; /* moves the button to the right */
+}
+
 
 .video-section {
     background: #fff;
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
@@ -97,11 +137,12 @@ a:hover {
 .video-label {
     text-align: center;
     color: #000;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 550;
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .video-container {
@@ -109,8 +150,10 @@ a:hover {
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 0px;
     background: #000;
+    border:1px solid #000;
+    position: relative; left: -20px; width: calc(100% + 40px);
 }
 
 .video-container iframe {

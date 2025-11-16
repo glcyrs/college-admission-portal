@@ -78,6 +78,21 @@ function showNotification(message) {
 function handleNext() {
     let error = false;
 
+    const aapField = document.getElementById('aapField');
+    const AFProg = document.querySelector('input[name="aap"]:checked');
+
+  if (!AFProg) {
+    aapField.classList.add('error');
+    error = true;
+  } else {
+    aapField.classList.remove('error');
+  }
+
+
+
+
+
+    /*
     const aap = document.querySelector('input[name="aap"]:checked');
 
     // Reset previous errors
@@ -88,7 +103,7 @@ function handleNext() {
         document.querySelectorAll('input[name="aap"]').forEach(input => input.classList.add('error'));
         error = true;
     }
-
+    */
     if (error) {
         showNotification("Please complete all required fields before proceeding.");
         window.scrollTo({ top: 0, behavior: "smooth" });

@@ -14,7 +14,10 @@
         
         <!-- PAGE 1 -->
         <div class="notice-card" id="noticeCard">
-            <h1>Data Privacy Notice</h1>
+            <div class="h1-wrapper">
+                <h1>Data Privacy Notice</h1>
+                <div class="h1-line"></div>
+            </div>
             <h2>Revised Privacy Statement</h2>
 
             <p>
@@ -63,8 +66,10 @@
                 our Data Protection Officer at <a href="mailto:dpo@g.batstate-u.edu.ph">dpo@g.batstate-u.edu.ph</a> or at (+63) 43 406-9800; 
                 778-8400 to 62 local: 171.
             </p>
-
-            <button class="continue-btn" onclick="showVideo()">Continue</button>
+            <div class="h1-line"></div>
+            <div class="button-container">
+                <button class="continue-btn" onclick="showVideo()">Continue</button>
+            </div>
         </div>
 
         <!-- PAGE 2 (VIDEO PAGE) -->
@@ -78,8 +83,9 @@
                     allowfullscreen>
                 </iframe>
             </div>
-
-            <button class="continue-btn" onclick="nextStep()">Continue</button>
+            <div class="button-container">
+                <button class="continue-btn" onclick="nextStep()">Continue</button>
+            </div>
         </div>
     </div>
 

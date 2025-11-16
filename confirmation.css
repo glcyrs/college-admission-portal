@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #ffffff;
-  color: #333;
+  color: #656565;
 }
 
 /* HEADER */
@@ -238,17 +238,46 @@ body {
   color: #28a745;
 }
 
-.container {
-    width: calc(100% - 60px);       
-    margin: 0 auto;             /* center horizontally */
-    background-color: white;
-    border-radius: 8px;
-    border: 2px solid #7b7b7b6d; 
-    padding: 20px;          /* optional internal padding */
-    box-sizing: border-box; /* include padding in width/height */
+.confirmation-section {
+  display: flex;
+  justify-content: center;
+  margin: 60px auto;
 }
 
- /*.notification {
+.container {
+  width:92%;       
+  background-color: #fff;
+  border-radius: 10px;
+  border: 4px solid #EEEEEE; 
+  padding: 40px 60px;          /* optional internal padding */
+  box-sizing: border-box; /* include padding in width/height */
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  flex-wrap: wrap;
+}
+
+/* When the screen gets small enough for overlap risk */
+@media (max-width: 900px) {
+  .container {
+    margin-top: 200px; /* add extra space only when needed */
+  }
+}
+
+
+.note {
+  font-size: 16px;
+  color: #656565;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+.option input[type="radio"] {
+  margin-right: 6px;
+  accent-color: #656565; /* matches the text color */
+}
+/*.notification {
     display: none;
     background-color: #fef2f2;
     border-left: 4px solid #ef4444;
@@ -334,10 +363,12 @@ body {
 }
 
 .sub-field select {
-    padding: 0.45rem;
-    border-radius: 5px;
-    border: 1px solid #d1d5db;
-    width: 100%;
+  font-family: 'Roboto', sans-serif;
+  padding: 0.45rem;
+  border-radius: 5px;
+  border: 1px solid #656565;
+  width: 95%;
+  color: #656565
 }
 
 .hidden {
@@ -345,12 +376,17 @@ body {
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 95%;
     padding: 0.5rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid #656565;
     border-radius: 4px;
     margin-bottom: 0.75rem;
 }
+
+.sub-label {
+    display: block;
+} 
+
 
 input.error {
     border-color: #ef4444;
@@ -362,15 +398,18 @@ input.error {
 }
 
 .btn-next {
-    background: #16a34a;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
+  background: #5CB85C;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 .btn-next:hover {
-    background: #15803d;
+    background: #4cae4c;
 }

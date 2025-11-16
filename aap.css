@@ -328,6 +328,7 @@ body {
   text-align: justify;
   font-family: 'Roboto', sans-serif;
   margin-left: 20px;
+  margin-right: 20px;
 
   /* Make it flex for icon alignment */
   display: flex;
@@ -356,18 +357,26 @@ body {
   text-decoration: underline;
 }
 
+.aap-option input[type="radio"] {
+  margin-right: 6px;
+  accent-color: #656565; /* matches the text color */
+}
+
 .btn-next {
-    background: #16a34a;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
+  background: #5CB85C;;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 40px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  font-size: 16px;
 }
 
 .btn-next:hover {
-    background: #15803d;
+    background: #4cae4c;
 }
 
 .error-notif {
@@ -389,5 +398,6 @@ body {
 }
 
 .error {
-  border: 2px solid red;
+  border: 2px solid #dc3535;
+  border-radius: 5px;
 }

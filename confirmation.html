@@ -86,21 +86,8 @@
   </section>
 
   <!-- CONFIRMATION SECTION -->
+ <section id="confirmation-section" class="confirmation-section">
  <div class="container">
-<!--<div id="notification" class="notification">
-            <div class="notification-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-            </div>
-            <div class="notification-content">
-                <h3>Please complete all required fields</h3>
-                <p>All questions marked with (*) must be answered before proceeding.</p>
-            </div>
-        </div>-->
-
         <div class="note">
             <p><span class="required">Note: (*) - Required</span></p>
             <p>Kindly provide the necessary information.</p>
@@ -123,7 +110,7 @@
 
         <!-- Q2 -->
         <div id="q2" class="question">
-            <span class="question-label">2. Is the applicant already enrolled...?*</span>
+            <span class="question-label">2. Is the applicant already enrolled (or was enrolled) in a college program in BatStateU or in other schools?*</span>
             <div class="options">
                 <div class="option">
                     <input type="radio" id="enrolled-yes" name="alreadyEnrolled" value="yes">
@@ -138,7 +125,7 @@
 
         <!-- Q3 -->
         <div id="q3" class="question">
-            <span class="question-label">3. First time applying?*</span>
+            <span class="question-label">3. Is this the applicant’s first time to apply for BatStateU College Admission?*</span>
             <div class="options">
                 <div class="option">
                     <input type="radio" id="first-yes" name="firstTimeApplying" value="yes">
@@ -153,7 +140,7 @@
 
         <!-- Q4 -->
         <div id="q4" class="question">
-            <span class="question-label">4. Have you ever transferred?*</span>
+            <span class="question-label">4. Have you ever transferred during your Senior High School?*</span>
             <div class="options">
                 <div class="option">
                     <input type="radio" id="transferred-yes" name="transferred" value="yes">
@@ -175,7 +162,7 @@
 
         <!-- Q5 -->
         <div id="q5" class="question">
-            <span class="question-label">5. Are you a BSU graduate?*</span>
+            <span class="question-label">5. Are you a graduate of Batangas State University Laboratory/Integrated School?*</span>
             <div class="options">
                 <div class="option">
                     <input type="radio" id="bsu-yes" name="bsuGraduate" value="yes">
@@ -198,10 +185,11 @@
 
         <div class="button-container">
             <button class="btn-next" onclick="handleNext()">
-                Next <span>→</span>
+                Next &#10140;
             </button>
         </div>
     </div>
+    </section>
 
      <!-- Error notification container -->
 <div id="error-notif" class="error-notif">
