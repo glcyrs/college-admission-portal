@@ -136,7 +136,7 @@
   color: #0086C9;
 }
 
-.next-btn {
+.btn-next {
   background-color: #5CB85C;
   color: white;
   border: none;
@@ -149,6 +149,6 @@
   float: right;
 }
 
-.next-btn:hover {
+.btn-next:hover {
   background-color: #4cae4c;
 }

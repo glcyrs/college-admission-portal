@@ -7,7 +7,7 @@ body {
 
 /* HEADER */
 .header-section {
-  background: url('header.png') center center no-repeat;
+  background: url('assets/header.png') center center no-repeat;
   background-size: contain;
   width: 100vw;
   height: auto;
