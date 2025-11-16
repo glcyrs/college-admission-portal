@@ -28,18 +28,18 @@ function login() {
   const pinPattern = /^\d{4}$/;        // 4 digits
 
   if (!appPattern.test(appNumber)) {
-    showToast("⚠️ Application Number format invalid. Use XX-XXXXX.", "error");
+    showToast(" Application Number format invalid. Use XX-XXXXX.", "error");
     return;
   }
 
   if (!pinPattern.test(pin)) {
-    showToast("⚠️ PIN format invalid. Enter 4 digits.", "error");
+    showToast(" PIN format invalid. Enter 4 digits.", "error");
     return;
   }
 
   // If format is correct, proceed
-  showToast("✅ Login successful!", "success");
-  setTimeout(() => { window.location.href = "index.html"; }, 1000);
+  showToast("Login successful!", "success");
+  setTimeout(() => { window.location.href = "privacy.html"; }, 1000);
 }
 
 // Optional: auto-format app number while typing
@@ -55,11 +55,11 @@ function sendEmail() {
   const email = document.getElementById("emailSend").value.trim();
 
   if (!email) {
-    showToast("⚠️ Please enter your email.", "error");
+    showToast(" Please enter your email.", "error");
     return;
   }
 
-  showToast(`📧 Verification email sent to ${email}`, "success");
+  showToast(`Verification email sent to ${email}`, "success");
   setTimeout(showLogin, 1500);
 }
 
@@ -72,7 +72,7 @@ function verifyApplicant() {
   const details = document.getElementById("applicationDetails");
 
   if (!last || !first || !birth || !email) {
-    details.innerHTML = `<div class="alert error">⚠️ Please fill in all fields.</div>`;
+    details.innerHTML = `<div class="alert error">Please fill in all fields.</div>`;
     return;
   }
 
@@ -80,7 +80,7 @@ function verifyApplicant() {
   if (last.toLowerCase() === "dela cruz" && first.toLowerCase() === "juan") {
     details.innerHTML = `
       <div class="alert success">
-        ✅ Applicant Found
+         Applicant Found
         <br><strong>Name:</strong> ${first} ${last}<br>
         <strong>Birthdate:</strong> ${birth}<br>
         <strong>Email:</strong> ${email}<br>
@@ -88,10 +88,10 @@ function verifyApplicant() {
         <strong>PIN:</strong> 1234
       </div>
     `;
-    showToast("✅ Applicant verified successfully!", "success");
+    showToast("Applicant verified successfully!", "success");
     setTimeout(showLogin, 2500);
   } else {
-    details.innerHTML = `<div class="alert error">❌ No applicant found. Please check your details.</div>`;
-    showToast("❌ No applicant found.", "error");
+    details.innerHTML = `<div class="alert error"> No applicant found. Please check your details.</div>`;
+    showToast("No applicant found.", "error");
   }
 }
