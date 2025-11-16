@@ -81,15 +81,12 @@ function handleNext() {
     const aapField = document.getElementById('aapField');
     const AFProg = document.querySelector('input[name="aap"]:checked');
 
-  if (!AFProg) {
-    aapField.classList.add('error');
-    error = true;
-  } else {
-    aapField.classList.remove('error');
-  }
-
-
-
+    if (!AFProg) {
+        aapField.classList.add('error');
+        error = true;
+    } else {
+        aapField.classList.remove('error');
+    }
 
 
     /*

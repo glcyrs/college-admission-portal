@@ -240,21 +240,31 @@ body {
 
 /* body */
 .container {
-    width: calc(100% - 60px);       
+    width: 92%;
     margin: 0 auto;             /* center horizontally */
     background-color: white;
-    border-radius: 8px;
-    border: 2px solid #7b7b7b6d; 
-    padding: 20px;          /* optional internal padding */
+    border-radius: 10px;
+    border: 4px solid #EEEEEE;
+    padding: 20px;
     box-sizing: border-box; /* include padding in width/height */
+    flex-wrap: wrap;
 }
+
+/* When the screen gets small enough for overlap risk */
+@media (max-width: 900px) {
+  .container {
+    margin-top: 200px; /* add extra space only when needed */
+  }
+}
+
 
 .section-header {
     background-color: #28a745;
     color: white;
     padding: 12px 20px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
+    border-radius: 3px;
 }
 
 .frame {
@@ -415,17 +425,20 @@ body {
 }
 
 .btn-next {
-  background-color: #28a745;
+  background-color: #5CB85C;
   color: white;
   font-weight: 600;
   border: none;
   padding: 12px 25px;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
   margin: 30px 30px;
+  font-weight: normal;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
 .btn-next:hover {
-  background-color: #218838;
+  background-color: #4cae4c;
 }

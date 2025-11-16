@@ -521,19 +521,21 @@ body {
 }
 
 .btn-next {
-  background-color: #28a745;
+  background-color: #5CB85C;
   color: white;
   font-weight: 600;
   border: none;
   padding: 12px 25px;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
   margin: 30px 30px;
+  font-weight: normal;
+  font-size: 16px;
 }
 
 .btn-next:hover {
-  background-color: #218838;
+  background-color: #4cae4c;
 }
 
 .error-notif {

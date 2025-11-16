@@ -240,13 +240,21 @@ body {
 
 /* body */
 .container {
-    width: calc(100% - 60px);       
-    margin: 0 auto;             /* center horizontally */
-    background-color: white;
-    border-radius: 8px;
-    border: 2px solid #7b7b7b6d; 
-    padding: 20px;          /* optional internal padding */
-    box-sizing: border-box; /* include padding in width/height */
+   width: 92%;
+   margin: 0 auto;             /* center horizontally */
+   background-color: white;
+   border-radius: 8px;
+   border: 4px solid #EEEEEE;
+   padding: 20px;          /* optional internal padding */
+   box-sizing: border-box; /* include padding in width/height */
+   flex-wrap: wrap;
+}
+
+/* When the screen gets small enough for overlap risk */
+@media (max-width: 900px) {
+  .container {
+    margin-top: 200px; /* add extra space only when needed */
+  }
 }
 
 .section-header {
@@ -254,7 +262,8 @@ body {
     color: white;
     padding: 12px 20px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
+    border-radius: 3px;
 }
 
 .frame {
@@ -485,7 +494,10 @@ body {
     display: flex;
     justify-content: flex-end;
     margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 65px;
 }
+
 
 .btn-submit {
     padding: 12px 30px;
@@ -494,7 +506,7 @@ body {
     border: none;
     border-radius: 20px;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 520;
     cursor: pointer;
     transition: background-color 0.2s;
 }

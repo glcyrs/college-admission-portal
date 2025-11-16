@@ -80,46 +80,153 @@
     </div>
   </section>
 
-  <!--Body-->
- <div class="container">
-        <div class="section-header">Submit Application</div>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
 
-    <div class="frame">     
-  <div class="notice-box">
+    <!--Body-->
+    <div class="container">
+        <div class="section-header">Submit Application</div>
+        <div class="frame">
+            
+            <div class="notice-box">
+                <p>
+                    Your application will be submitted upon ticking 
+                    <b>"I hereby certify..."</b> and clicking 
+                    <b>"Submit Application"</b> button. 
+                    When successful, an email notification will be sent to 
+                    <b>asdasdasdasd@gmail.com</b>.
+                </p>
+            </div> 
+
+            <div class="container2">
+                <div class="signature-label">Signature</div>
+
+                <div class="signature-section">
+                    <div>
+                        <div class="signature-box" id="signatureBox">
+                            <canvas id="signatureCanvas"></canvas>
+                            <img id="signatureImage" class="signature-image" alt="Signature">
+                            <div class="signature-placeholder" id="placeholder">
+                                Click to upload signature
+                            </div>
+                        </div>
+
+                        <div class="file-controls">
+                            <input type="file" id="fileInput" class="file-input" accept="image/*">
+                            <button class="btn" id="chooseFileBtn">Choose File</button>
+                            <span id="fileName" style="color: #999; font-size: 13px;">No file chosen</span>
+                        </div>
+
+                        <button class="btn-draw" id="drawBtn">
+                            <svg class="pen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                <path d="M2 2l7.586 7.586"></path>
+                            </svg>
+                            Draw Signature
+                        </button>
+                    </div>
+
+                    <div class="requirements-box">
+                        <div class="requirements-header">
+                            <div class="info-icon">i</div>
+                            <span>Signature Requirements</span>
+                        </div>
+                        <ul class="requirements-list">
+                            <li>Plain white background</li>
+                            <li>Signature in <strong>black tint</strong></li>
+                            <li>Less than <strong>2mb</strong> in file size</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- end container2 -->
+
+            <hr class="divider">
+
+            <div class="certification-section">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="certifyCheckbox">
+                    <label for="certifyCheckbox" class="certification-text">
+                        I hereby certify that all information provided herein is complete and accurate. 
+                        Misrepresentation, falsification and any form of dishonesty committed in relation to my 
+                        application shall be sufficient grounds for my disqualification from admission to BatStateU.
+                    </label>
+                </div>
+            </div>
+
+            <!-- Success Notification -->
+            <div id="notifOverlay" class="notif-overlay">
+                <div class="notif-box">
+                    <div class="notif-icon">
+                        <span>&#10003;</span>
+                    </div>
+
+                    <h2 class="notif-title">Application Submitted</h2>
+                    <p class="notif-sub">Check your Status</p>
+
+                    <button class="notif-btn" onclick="goToEducAttach()">Proceed</button>
+                </div>
+            </div>
+
+        </div> <!-- end frame -->
+    </div> <!-- end container -->
+
+    <!-- Submit button outside the container -->
+    <div class="submit-section">
+        <button class="btn-submit" id="submitBtn" disabled>Submit Application</button>
+    </div>
+
+</body>
+</html>
+
+
+  <!--Body-->
+<!--
+  <div class="container">
+    <div class="section-header">Submit Application</div>
+    <div class="frame">
+      <div class="notice-box">
       <p>Your application will be submitted upon ticking <b>"I hereby certify..."</b> and clicking <b>"Submit Application"</b> button. 
       When successful, an email notification will be sent to <b>asdasdasdasd@gmail.com.</b></p>
     </div> 
-
-<div class="container2">
-        <div class="signature-label">Signature</div>
-        
+    <div class="container2">
+      <div class="signature-label">Signature</div>
+  
         <div class="signature-section">
-            <div>
-                <div class="signature-box" id="signatureBox">
-                    <canvas id="signatureCanvas"></canvas>
-                    <img id="signatureImage" class="signature-image" alt="Signature">
-                    <div class="signature-placeholder" id="placeholder">Click to upload signature</div>
-                </div>
+          <div>
+            <div class="signature-box" id="signatureBox">
+              <canvas id="signatureCanvas"></canvas>
+              <img id="signatureImage" class="signature-image" alt="Signature">
+              <div class="signature-placeholder" id="placeholder">Click to upload signature</div>
+            </div>
                 
-                <div class="file-controls">
-                    <input type="file" id="fileInput" class="file-input" accept="image/*">
-                    <button class="btn" id="chooseFileBtn">Choose File</button>
-                    <span id="fileName" style="color: #999; font-size: 13px;">No file chosen</span>
-                </div>
+            <div class="file-controls">
+              <input type="file" id="fileInput" class="file-input" accept="image/*">
+              <button class="btn" id="chooseFileBtn">Choose File</button>
+              <span id="fileName" style="color: #999; font-size: 13px;">No file chosen</span>
+            </div>
                 
-                <button class="btn-draw" id="drawBtn">
-                    <svg class="pen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-                        <path d="M2 2l7.586 7.586"></path>
-                    </svg>
-                    Draw Signature
-                </button>
+            <button class="btn-draw" id="drawBtn">
+              <svg class="pen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                <path d="M2 2l7.586 7.586"></path>
+              </svg>
+                Draw Signature
+            </button>
             </div>
             
             <div class="requirements-box">
                 <div class="requirements-header">
-                    <div class="info-icon">i</div>
+                  <div class="info-icon">i</div>
                     <span>Signature Requirements</span>
             </div>
                 <ul class="requirements-list">
@@ -144,8 +251,8 @@
             </div>
         </div>
 
-<!-- Success Notification -->
-<div id="notifOverlay" class="notif-overlay">
+  
+  <div id="notifOverlay" class="notif-overlay">
   <div class="notif-box">
     <div class="notif-icon">
       <span>&#10003;</span>
@@ -156,9 +263,14 @@
 
     <button class="notif-btn" onclick="goToEducAttach()">Proceed</button>
   </div>
-</div>
+  </div>
 
-        <div class="submit-section">
-            <button class="btn-submit" id="submitBtn" disabled>Submit Application</button>
-        </div>
-    </div>
+
+  </div>
+
+  <div class="submit-section">
+    <button class="btn-submit" id="submitBtn" disabled>Submit Application</button>
+  </div>
+  </body>
+  </html>
+-->
