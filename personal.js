@@ -537,6 +537,6 @@ function handleNext() {
 
   if (error) { showNotification("Please complete all required fields before proceeding."); window.scrollTo({top:0, behavior:"smooth"}); return; }
 
-  window.location.href = "next-section.html";
+  window.location.href = "educattach.html";
 }
 

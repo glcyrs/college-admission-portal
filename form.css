@@ -1,0 +1,431 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* HEADER */
+.header-section {
+  background: url('header.png') center center no-repeat;
+  background-size: contain;
+  width: 100vw;
+  height: auto;
+  aspect-ratio: 2000 / 601;
+  background-attachment: scroll;
+  background-color: white;
+}
+
+/* INFORMATION BOX */
+.info-box {
+  border-left: 6px solid #5BC0DE;
+  border: 4px solid #EEEEEE;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 40px auto;
+  width: 90%;
+  background-color: #FFFFFF;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.info-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.info-content .info-icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  margin-top: 0.2em;
+}
+
+.info-content p {
+  margin: 0;
+}
+
+.info-box a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.info-box a:hover {
+  text-decoration: underline;
+}
+
+/* AY SECTION */
+.ay-section {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 25px ;
+}
+
+.grades-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 60px auto;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.grades-title {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #EEEEEE;
+  padding: 5px 15px;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.grades-box-container {
+  border: 4px solid #EEEEEE;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  padding: 50px 30px 40px;
+  width: 92%;
+  margin:0 auto;
+  display: flex;
+  justify-content:center;
+  align-items: stretch;
+  column-gap: 350px;
+  row-gap: 30px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.grade-card {
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  padding: 20px;
+  flex: 0 1 450px;
+  text-align: center;
+  transition: transform 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.grade-card:hover {
+  transform: scale(1.05);
+}
+
+.grade-card img {
+  width: 40px;
+  margin-bottom: 10px;
+}
+
+.grade-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.grade-header img {
+  width: 60px;
+  height: auto;
+}
+
+.grade-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.download-text {
+  color: #656565;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top:auto;
+}
+
+.download-text i {
+  color: #656565;
+  font-size: 1em;
+}
+
+/* STEPS */
+.steps-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 75px;
+  position: relative;
+  align-items: center;
+  height: 70px;
+}
+
+/* line behind the circles */
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 50px; /* margin from left */
+  right: 50px; /* margin from right */
+  height: 2px;
+  background-color: #ccc;
+  z-index: -1; /* put behind the step circles */
+  transform: translateY(-50%); /* perfectly center line vertically */
+}
+
+@media (max-width: 900px) {
+  .steps::before {
+    display: none;
+  }
+}
+
+/* STEP CIRCLES */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #777;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.step span {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  transition: all 0.3s;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.step i {
+  font-size: 17px;
+}
+
+/* ACTIVE STEP */
+.step.active span {
+  background-color: #28a745; /* green */
+  border-color: #1a9737;
+  color: #fff;
+}
+
+.step.active p {
+  color: #28a745;
+}
+
+/* body */
+.container {
+    width: calc(100% - 60px);       
+    margin: 0 auto;             /* center horizontally */
+    background-color: white;
+    border-radius: 8px;
+    border: 2px solid #7b7b7b6d; 
+    padding: 20px;          /* optional internal padding */
+    box-sizing: border-box; /* include padding in width/height */
+}
+
+.section-header {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.frame {
+  background-color: rgba(163, 163, 163, 0.204);
+  padding: 25px 25px;           /* gives space inside the frame (top + sides) */
+  margin-top: 30px;             /* adds space above the entire frame */
+  box-sizing: border-box;
+}
+
+.notice-box {
+  background-color: #fffd8741;
+  border: 2px solid #cecd6c67;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 13px;
+  font-size: 13px;
+}
+
+.frame2 {
+  background-color: rgb(255, 255, 255);
+  padding: 25px 25px;           /* gives space inside the frame (top + sides) */
+  margin-top: 30px;             /* adds space above the entire frame */
+  box-sizing: border-box;
+}
+
+.form-content {
+  padding: 30px;
+}
+
+.reference-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: #333;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.header-section1 {
+  display: flex;
+  align-items: flex-start;  /* align items at the top */
+  justify-content: space-between; /* spread left, center, right */
+  padding: 10px 50px; /* add some space on sides */
+  gap: 20px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center; /* centers text and image vertically */
+  gap: 10px;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; /* keeps the image circular and clean */
+  background-color: #fff;
+  margin-left: 50px;
+}
+
+.title-section {
+  flex-grow: 1;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.app-number {
+  font-size: 15px;
+  text-align: right;
+  white-space: nowrap; /* keeps it in one line */
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 50px;
+}
+
+.university-name {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.university-subtitle {
+  font-size: 25px;
+  color: #c00;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.office-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.form-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.form-subtitle {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.border {
+  border: 2px solid #333;
+  padding: 20px;
+  max-height: 400px; /* adjust as needed */
+  overflow-y: auto;   /* enables vertical scroll if content is too long */
+  background-color: #fff;
+}
+
+.privacy-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.privacy-text {
+  flex: 1; /* takes remaining space */
+  font-size: 15px;
+  line-height: 1.5;
+  font-style: italic;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.small-text {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.photo-box {
+  width: 120px;
+  height: 150px;
+  border: 2px solid #333;
+  flex-shrink: 0; /* prevents shrinking */
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #999;
+}
+
+/* Submit button */
+.submit-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.btn-next {
+  background-color: #28a745;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 30px 30px;
+}
+
+.btn-next:hover {
+  background-color: #218838;
+}
