@@ -126,10 +126,10 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="otherNationalityContainer" style="display:none;">
           <label><u>*Nationality</u></label>
           <div class="other-nationality">
-            <input type="text" placeholder="">
+            <input type="text" id="otherNationality" placeholder="">
             <div class="other-box">Other, Please specify</div>
           </div>
         </div>
@@ -160,7 +160,7 @@
 
           <div class="address-field">
             <label><u>Barangay</u></label>
-            <select id="barangay"><option>Select Barangay</option></select>
+            <select id="barangay"><option value="">Select Barangay</option></select>
           </div>
 
           <div class="address-field">
@@ -239,9 +239,9 @@
               </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="otherRelationshipContainer" style="display:none;">
               <label>If others, Please specify:</label>
-              <input type="text" placeholder="">
+              <input type="text" id="otherRelationship" placeholder="">
             </div>
           </div>
         </div>
@@ -265,7 +265,7 @@
         </div>
 
         <!-- 4Ps Program -->
-        <div class="form-group vertical-field">
+        <div class="form-group vertical-field" id="ppsField">
           <div>
             <label><u>* Is your family a recipient of the 4Ps Program of the government?</u></label>
             <div class="infos-box">
@@ -279,18 +279,18 @@
         </div>
 
         <!-- Indigenous Group -->
-        <div class="form-group vertical-field">
+        <div class="form-group vertical-field" id="indigenousField">
           <label><u>* Are you a member of any indigenous group?</u></label>
           <div class="infos-box">
             <p><b>Indigenous groups</b> are distinct social and cultural groups that share collective ancestral ties to the lands and natural resources where they live, occupy or from which they have been displaced.</p>
           </div>
           <div class="radio-group">
-            <label class="no-underline"><input type="radio" name="indigenous"> Yes</label>
-            <label class="no-underline"><input type="radio" name="indigenous"> No</label>
+            <label class="no-underline"><input type="radio" name="indigenous" value="Yes"> Yes</label>
+            <label class="no-underline"><input type="radio" name="indigenous" value="No"> No</label>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="indigenousSelectContainer">
           <label><u>* If yes, please identify.</u></label>
           <select id="indigenousSelect">
             <option>N/A</option>
@@ -394,13 +394,13 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="indigenousOtherContainer">
           <label><u>* If others, please identify.</u></label>
           <input type="text" id="indigenousOther" placeholder="">
         </div>
 
         <!-- LGBTQIA+ -->
-        <div class="form-group vertical-field">
+        <div class="form-group vertical-field" id="lgbtqiaField">
           <label><u>* Are you a member of LGBTQIA+?</u></label>
           <div class="infos-box">
             <p><b>LGBTQIA+</b> stands for lesbian, gay, bisexual, transgender, queer (or sometimes questioning), intersex, asexual, and others.</p>
@@ -413,7 +413,7 @@
         </div>
 
         <!-- Internally Displaced Person -->
-        <div class="form-group idp-section vertical-field">
+        <div class="form-group idp-section vertical-field" id="idpField">
           <div class="label-btn-wrapper">
             <label><u>* Are you an internally displaced person?</u></label>
             <button class="info-btn">
@@ -466,18 +466,18 @@
 
           </div>
           <div class="radio-group">
-            <label class="no-underline"><input type="radio" name="idp"> Yes</label>
-            <label class="no-underline"><input type="radio" name="idp"> No</label>
+            <label class="no-underline"><input type="radio" name="idp" value="Yes"> Yes</label>
+            <label class="no-underline"><input type="radio" name="idp" value="No"> No</label>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="idpDetailsContainer">
           <label>If yes, please provide some details:</label>
-          <input type="text" placeholder="">
+          <input type="text" id="idpDetails" placeholder="Enter details">
         </div>
 
         <!-- Person with Disability -->
-        <div class="form-group vertical-field">
+        <div class="form-group vertical-field" id="pwdField">
           <label><u>* Are you a person with disability?</u></label>
           <div class="radio-group">
             <label class="no-underline"><input type="radio" name="pwd"> Yes</label>
@@ -553,7 +553,7 @@
         </div>
         
         <!-- Solo parent -->
-        <div class="form-group vertical-field">
+        <div class="form-group vertical-field" id="soloField">
           <label><u>* Are you a child of a solo parent?</u></label>
           <div class="infos-box">
             <p><b>Solo parent</b> refers to a parent who is left alone with the responsibility of parenthood due to death, detention, mental incapacity or legal separation with spouse.</p>
@@ -575,7 +575,7 @@
           <div class="parents-box-title">Parent's Information</div>
         </div>
 
-        <div class="parents-box">
+        <div class="parents-box" id="parentsBox">
           <table class="parents-table">
             <tr>
               <th rowspan="2">Relationship</th>
@@ -618,7 +618,7 @@
 
       <hr class="divider">
 
-      <div class="income-section">
+      <div class="income-section" id="incomeField">
         <p class="income-label"><u>Estimated Monthly Family Income</u></p>
 
         <div class="income-options">
@@ -642,16 +642,18 @@
       </div>
 
       <!-- SIBLING/S INFORMATION SECTION -->
-      <div class="siblings-section">
+      <div class="siblings-section" id="siblingsField">
         <div class="siblings-header">
           <p class="siblings-title">Sibling/s Information</p>
         </div>
 
+        
         <p class="siblings-question"><u>Do you have any siblings (brothers or sisters)?</u></p>
         <div class="radio-group">
           <label><input type="radio" name="hasSiblings" id="hasSiblingsYes"> Yes</label>
           <label><input type="radio" name="hasSiblings" id="hasSiblingsNo"> No</label>
         </div>
+       
 
         <div class="siblings-box-header" id="addSiblingHeader">
           <div class="siblings-box-title">Add Sibling</div>
@@ -718,7 +720,7 @@
     <!-- Next Button -->
       <div class="button-container">
         <button class="next-btn" onclick="handleNext()">
-          Next <span>→</span>
+          Next &#10140;
         </button>
       </div>
 

@@ -866,7 +866,7 @@ label.no-underline {
   display: flex;
   flex-wrap: wrap;
   gap: 20px; /* space between each option */
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .income-options label {
@@ -1097,6 +1097,9 @@ label.no-underline {
 .error {
   border: 2px solid #dc3535;
   background-color: #fff0f0;
+  border-radius: 5px;
+  /* */
+  padding: 1rem;
 }
 
 .question {
@@ -1106,7 +1109,7 @@ label.no-underline {
 }
 
 .question.error {
-    background: #fef2f2;
+    background: #fff0f0;
     border: 2px solid #dc3535;
 }
 /* ----*/
@@ -1116,6 +1119,32 @@ input.error,
 select.error,
 .radio-group .error {
   border: 2px solid #dc3535;
-  background-color: #f8d7da;
+  background-color: #fff0f0;
+}
+/*
+.sex-field.error {
+  background-color: #ffe6e6;
+  padding: 5px;
+  border-radius: 5px;
+}
+*/
+
+/* Highlight only the radio group, not the label */
+.error-radio-group {
+  background-color: #fff0f0;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #dc3535;
 }
 
+/*
+#indigenousSelectContainer,
+#indigenousOtherContainer {
+  display: none;
+}
+*/
+
+td.error {
+  outline: 2px solid red !important;
+  background-color: #ffe6e6 !important;
+}
